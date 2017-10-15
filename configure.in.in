@@ -1,0 +1,255 @@
+# Original Author was Kalle@kde.org
+# I lifted it in some mater. (Stephan Kulow)
+# I used much code from Janos Farkas
+
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(acinclude.m4) dnl a source file from your sub dir
+
+dnl This is so we can use kde-common
+AC_CONFIG_AUX_DIR(admin)
+
+UIC_NOT_NEEDED=true
+
+KDE_SET_PREFIX
+
+AC_CANONICAL_SYSTEM
+AC_ARG_PROGRAM
+
+dnl Automake doc recommends to do this only here. (Janos)
+AM_INIT_AUTOMAKE(@MODULENAME@, @VERSION@) dnl searches for some needed programs
+
+AC_PROG_INSTALL
+
+dnl generate the config header
+AM_CONFIG_HEADER(config.h) dnl at the distribution this done
+
+dnl Checks for programs.
+AC_CHECK_COMPILERS
+AC_LIBLTDL_CONVENIENCE
+
+AC_ENABLE_SHARED(yes)
+AC_ENABLE_STATIC(no)
+KDE_PROG_LIBTOOL
+
+dnl for NLS support. Call them in this order!
+dnl WITH_NLS is for the po files, GNU_GETTEXT for the sources
+AM_KDE_WITH_NLS
+AM_KDE_GNU_GETTEXT
+
+dnl Checks for header files.
+KDE_CHECK_STL
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_CHECK_HEADERS(sys/param.h sys/mman.h sys/time.h sys/cdefs.h fnmatch.h sysent.h strings.h sys/stat.h sys/select.h sys/socket.h linux/socket.h socketbits.h sigaction.h paths.h malloc.h monetary.h limits.h sys/soundcard.h dlfcn.h)
+
+DCOPIDL2CPP="compiled"
+DCOPIDL="compiled"
+MCOPIDL="compiled"
+ARTSCCONFIG="compiled"
+MEINPROC="compiled"
+KDECONFIG="compiled"
+
+dnl Checks for libraries etc
+AC_BASE_PATH_KDE([don't test]) dnl kdelibs is a special case
+AC_CREATE_KFSSTND(default)
+AC_SUBST_KFSSTND
+
+dnl Image libraries
+KDE_CREATE_LIBS_ALIASES
+KDE_CHECK_KIMGIO
+
+AM_CONDITIONAL(HAVE_LIBJPEG, test -n "$LIBJPEG" )
+AM_CONDITIONAL(HAVE_LIBPNG, test -n "$LIBPNG" )
+AM_CONDITIONAL(HAVE_LIBTIFF, test -n "$LIBTIFF")
+
+# configure would do this very late. Too late for us!
+test "x$prefix" = xNONE && prefix=$ac_default_prefix
+
+AC_DEFINE_UNQUOTED(KDEDIR, "$prefix", [The prefix to use as fallback])
+
+ac_cpp_safe=$ac_cpp
+ac_cpp='$CXXCPP $CPPFLAGS $X_INCLUDES'
+AC_CHECK_HEADERS(X11/extensions/shape.h)
+ac_cpp=$ac_cpp_safe
+
+ac_cpp_safe=$ac_cpp
+ac_cpp='$CXXCPP $CPPFLAGS $X_INCLUDES'
+AC_CHECK_HEADERS(X11/extensions/XShm.h,have_mitshm=yes)
+ac_cpp=$ac_cpp_safe
+
+ac_cpp_safe=$ac_cpp
+ac_cpp='$CXXCPP $CPPFLAGS $X_INCLUDES'
+AC_CHECK_HEADERS(X11/ICE/ICElib.h)
+ac_cpp=$ac_cpp_safe
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_TIME
+
+AC_LANG_SAVE
+AC_LANG_C
+dnl AC_C_BIGENDIAN has a bug (one of its tests uses "main()" instead of
+dnl "int main()") so C++ compilers would break. Thats why we switch languages
+AC_C_BIGENDIAN
+AC_LANG_RESTORE
+
+dnl check if the compiler has bool
+AC_CHECK_BOOL
+dnl AC_CHECK_GNU_EXTENSIONS
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(socket vsnprintf seteuid setegid random strfmon stpcpy mkstemp gettimeofday setenv unsetenv mkstemps)
+
+AC_LANG_SAVE
+AC_LANG_C
+dnl the vfork test in autoconf has a bug with C++ compilers (it declares
+dnl the prototype for sparc_address_test() correctly but calls it without
+dnl arguments), so we switch languages here.
+AC_FUNC_VFORK
+AC_LANG_RESTORE
+
+AC_CHECK_USLEEP
+AC_CHECK_GETDOMAINNAME
+AC_CHECK_GETHOSTNAME
+AC_CHECK_RANDOM
+AC_CHECK_S_ISSOCK
+dnl AC_CHECK_SOCKLEN_T already in kde_misc_tests
+KDE_CHECK_INITGROUPS
+
+AC_MSG_CHECKING([for mount tab file])
+AC_CACHE_VAL(kde_cv_mtab_file,
+[
+    kde_cv_mtab_file=no
+
+    for ac_file in    \
+                      \
+        /etc/mtab \
+        /etc/mnttab \
+     ; \
+    do
+    if test -r "$ac_file"; then
+       kde_cv_mtab_file=$ac_file
+       break
+    fi
+    done
+])
+
+AC_MSG_RESULT($kde_cv_mtab_file)
+if test "$kde_cv_mtab_file" != "no"; then
+    AC_DEFINE_UNQUOTED(MTAB_FILE, "$kde_cv_mtab_file", [Define the file for mount entries])
+fi
+
+if test -n "$qt_includes"; then
+  QNAMESPACE_H="$qt_includes/qnamespace.h"
+fi
+AC_SUBST(QNAMESPACE_H)
+
+dnl output files
+AC_SUBST(x_includes)
+AC_SUBST(x_libraries)
+AC_SUBST(LIBSOCKET)
+AC_SUBST(LIBCOMPAT)
+AC_SUBST(LIBUTIL)
+AC_SUBST(LIBRESOLV)
+AC_SUBST(LIBICE)
+
+LIB_KDECORE='$(top_builddir)/kdecore/libkdecore.la'
+AC_SUBST(LIB_KDECORE)
+LIB_KDEUI='$(top_builddir)/kdeui/libkdeui.la'
+AC_SUBST(LIB_KDEUI)
+LIB_KFORMULA='$(top_builddir)/kformula/libkformula.la'
+AC_SUBST(LIB_KFORMULA)
+LIB_KIO='$(top_builddir)/kio/libkio.la'
+AC_SUBST(LIB_KIO)
+LIB_KSYCOCA='$(top_builddir)/kio/libksycoca.la'
+AC_SUBST(LIB_KSYCOCA)
+LIB_KFILE='$(top_builddir)/kfile/libkfile.la'
+AC_SUBST(LIB_KFILE)
+LIB_KPARTS='$(top_builddir)/kparts/libkparts.la'
+AC_SUBST(LIB_KPARTS)
+LIB_KAB='$(top_builddir)/kab/libkab.la'
+AC_SUBST(LIB_KAB)
+LIB_KHTML='$(top_builddir)/khtml/libkhtml.la'
+AC_SUBST(LIB_KHTML)
+LIB_DCOP='$(top_builddir)/dcop/libDCOP.la'
+AC_SUBST(LIB_DCOP)
+LIB_KSSL='$(top_builddir)/kssl/libkssl.la'
+AC_SUBST(LIB_KSSL)
+
+AC_SUBST(EXTRA_SUBDIRS)
+
+AC_MSG_CHECKING(if malloc debugging is wanted)
+AC_ARG_WITH(dmalloc,
+[  --with-dmalloc          use dmalloc, as in
+			  http://www.dmalloc.com/dmalloc.tar.gz],
+[if test "$withval" = yes; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(WITH_DMALLOC,1,
+            [Define if using the dmalloc debugging malloc package])
+  LIB_DMALLOC="-ldmalloc"
+  LDFLAGS="$LDFLAGS -g"
+else
+  AC_MSG_RESULT(no)
+fi], [AC_MSG_RESULT(no)])
+
+AC_SUBST(LIB_DMALLOC)
+
+AC_MSG_CHECKING(if MIT-SHM support is wanted)
+AC_ARG_ENABLE(mitshm,
+[  --enable-mitshm         use MIT-SHM for pixmap loading/saving],
+[if test "$enableval" = yes; then
+  AC_MSG_RESULT(yes)
+  want_mitshm="yes"
+else
+  AC_MSG_RESULT(no)
+fi], [AC_MSG_RESULT(yes); want_mitshm="yes"])
+
+if test "$want_mitshm" = "yes" -a "$have_mitshm" = "yes"; then
+  AC_SUBST(HAVE_MITSHM)
+  AC_DEFINE(HAVE_MITSHM,1,[Define if you want MIT-SHM support])
+fi
+
+ICE_SUBDIR=ICE
+ICE_RLIB=ICE/libkICE.la
+AC_SUBST(ICE_SUBDIR)
+AC_SUBST(ICE_RLIB)
+
+DCOPIDL='$(top_builddir)/dcop/dcopidl/dcopidl'
+DCOPIDL2CPP='$(top_builddir)/dcop/dcopidl2cpp/dcopidl2cpp'
+AC_SUBST(DCOPIDL)
+AC_SUBST(DCOPIDL2CPP)
+
+ac_save_LIBS="$LIBS"
+LIBS="$LIBS $X_LDFLAGS -lICE"
+AC_CHECK_FUNCS(_IceTransNoListen)
+LIBS="$ac_save_LIBS"
+
+AC_CONFIG_SUBDIRS(libltdl)
+
+CXXFLAGS="$CXXFLAGS $USE_RTTI"
+
+rgb_file="$x_libraries/X11/rgb.txt"
+AC_DEFINE_UNQUOTED(X11_RGBFILE, "$rgb_file", [where rgb.txt is in])
+
+AC_MSG_CHECKING([for Compiler version])
+for flag in '-v' '-V' '--version' '-version'; do
+   compiler_version=`$CXX $flag 2>&1 | egrep -v "Reading specs|Using builtin specs|Configured with|Thread model" | head -1`
+   clean_compiler_version=`echo $compiler_version | egrep -vi 'Usage|ERROR|unknown option|WARNING|missing|###'`
+   if test -n "$compiler_version" && test -n "$clean_compiler_version"; then
+      AC_DEFINE_UNQUOTED(KDE_COMPILER_VERSION, "$compiler_version", [what C++ computer were used for compilation])
+      AC_MSG_RESULT($compiler_version)
+      break
+   fi
+done
+
+AC_MSG_CHECKING([for uname])
+uname_string=`uname -smr`
+AC_DEFINE_UNQUOTED(KDE_COMPILING_OS, "$uname_string", [what OS used for compilation])
+AC_MSG_RESULT($uname_string)
+
+AC_MSG_CHECKING([for distribution channel])
+AC_ARG_WITH(distribution,
+[  --with-distribution     indicate the distribution in bug reports],
+[kde_distribution_text="$withval"
+], [kde_distribution_text='compiled sources'])
+AC_DEFINE_UNQUOTED(KDE_DISTRIBUTION_TEXT, "$kde_distribution_text", [Distribution Text to append to OS])
+AC_MSG_RESULT($kde_distribution_text)
