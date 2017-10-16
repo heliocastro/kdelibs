@@ -29,8 +29,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <qtimer.h>
 // end of qt <-> dcop integration
 
-#include <config.h>
-
 #include <sys/types.h>
 #include <sys/file.h>
 
