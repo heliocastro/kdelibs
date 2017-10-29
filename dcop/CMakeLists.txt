@@ -28,7 +28,7 @@ add_library(libdcop SHARED
     ${libdcop_SRCS}
     $<TARGET_OBJECTS:kICE>
     )
-
+add_dependencies(libdcop moc_libdcop)
 set_target_properties(libdcop PROPERTIES
     OUTPUT_NAME DCOP
     VERSION ${PROJECT_VERSION}
@@ -38,8 +38,13 @@ set_target_properties(libdcop PROPERTIES
 target_link_libraries(libdcop
     Qt::Qt2
     )
-target_compile_options(kICE PRIVATE -fPIC)
-
+target_compile_options(libdcop PRIVATE -fPIC)
+target_include_directories(libdcop
+    PRIVATE
+        ${CMAKE_CURRENT_BINARY_DIR}
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    )
 #install(TARGETS  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 #--------------------------------------------------------------
@@ -49,6 +54,10 @@ set(dcopserver_SRCS
     dcopsignals.cpp
     )
 
+qt2_wrap_cpp(TARGET dcopserver
+    SOURCES
+        dcopserver.h
+    )
 add_library(dcopserver MODULE ${dcopserver_SRCS})
 target_link_libraries(dcopserver PRIVATE libdcop)
 set_target_properties(dcopserver PROPERTIES

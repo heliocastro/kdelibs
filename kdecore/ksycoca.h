@@ -17,7 +17,7 @@
  **/
 
 #ifndef __ksycoca_h__
-#define __ksycoca_h__ "$Id$"
+#define __ksycoca_h__ "$Id: ksycoca.h,v 1.44.2.1 2001/09/07 20:54:54 waba Exp $"
 
 #include <dcopobject.h>
 #include <qobject.h>

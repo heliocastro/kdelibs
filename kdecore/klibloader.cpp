@@ -371,15 +371,15 @@ QString KLibLoader::findLibrary( const char * name, const KInstance * instance )
 
 KLibrary* KLibLoader::globalLibrary( const char *name )
 {
-KLibrary *tmp;
-int olt_dlopen_flag = lt_dlopen_flag;
+    KLibrary *tmp;
+    /*int olt_dlopen_flag = lt_dlopen_flag;
 
    lt_dlopen_flag |= LT_GLOBAL;
    kdDebug(150) << "Loading the next library global with flag " 
                 << lt_dlopen_flag
-                << "." << endl;
+                << "." << endl;*/
    tmp = library(name);
-   lt_dlopen_flag = olt_dlopen_flag;
+   /*lt_dlopen_flag = olt_dlopen_flag;*/
 
 return tmp;
 }

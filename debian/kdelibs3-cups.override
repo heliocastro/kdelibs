@@ -1,3 +1,0 @@
-kdelibs3-cups: no-shlibs-control-file usr/lib/libcupsdconf.so
-kdelibs3-cups: no-shlibs-control-file usr/lib/kde2/libkdeprint_cups.so
-

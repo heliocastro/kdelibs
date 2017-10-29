@@ -7,6 +7,7 @@ project(kdelibs
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 include(GNUInstallDirs)
+include(KDE2Utils)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -21,6 +22,7 @@ option(SYSTEM_LIBMNG "Use libmng from the operating system." ON)
 option(SYSTEM_JPEG "Use jpeglib from the operating system." ON)
 option(BUILD_TUTORIAL "Build tutorials." OFF)
 option(BUILD_EXAMPLES "Build examples." OFF)
+set(KDEDIR /opt/kde2 CACHE STRING "Default path ofr KDEDIR install")
 
 find_package(PkgConfig REQUIRED)
 
@@ -64,7 +66,10 @@ endif()
 
 find_package(X11 REQUIRED)
 
+create_kde2_config_header()
+
 add_subdirectory(dcop)
+add_subdirectory(kdecore)
 #add_subdirectory(libltdl)
 
 if(BUILD_TUTORIAL)
