@@ -71,6 +71,7 @@ create_kde2_config_header()
 add_subdirectory(dcop)
 add_subdirectory(kdecore)
 add_subdirectory(kdeui)
+add_subdirectory(kdesu)
 
 if(BUILD_TUTORIAL)
     add_subdirectory(tutorial)

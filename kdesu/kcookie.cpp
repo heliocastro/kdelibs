@@ -170,7 +170,7 @@ void KCookie::getICECookie()
 	    break;
 	}
 	QCStringList output;
-	while (fgets(buf, 1024, f) > 0)
+	while (fgets(buf, 1024, f) != NULL)
 	    output += buf;
 	if (pclose(f) < 0) 
 	{
