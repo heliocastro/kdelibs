@@ -23,7 +23,7 @@ set(kdecore_SRCS
     )
 
 
-qt2_wrap_cpp(TARGET kdecore
+qt2_wrap_cpp(kdecore_SRCS
     SOURCES
         kaccel.h
         kapp.h
@@ -57,38 +57,18 @@ qt2_wrap_moc(kdecore_SRCS
         kdesktopwidget.h
         )
 
-add_library(kdecore SHARED
-    ${kdecore_SRCS}
-
-    )
-
-set_target_properties(kdecore PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-    LINK_FLAGS "-Wl,--as-needed -Wl,--no-undefined"
-)
-
-target_link_libraries(kdecore
-    Qt::Qt2
-    libdcop
-    ltdl
-    dl
-    ${X11_LIBRARIES}
-    )
-
-target_compile_definitions(kdecore PUBLIC "KDEDIR=\"${KDEDIR}\"")
-
-target_compile_options(kdecore
-    PRIVATE
-        -fPIC
+kde2_library(kdecore
+    SOURCES
+        ${kdecore_SRCS}
+    PRIVATE_LIBS
+        ltdl
+        dl
+    COMPILE_OPTIONS
         -Wno-format-security
-    )
-
-target_include_directories(kdecore
-    PRIVATE
-        ${CMAKE_CURRENT_BINARY_DIR}
-    PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    LIBS
+        Qt::Qt2
+        kde2::dcop
+        ${X11_LIBRARIES}
     )
 
 #install(TARGETS  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

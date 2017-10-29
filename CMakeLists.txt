@@ -70,7 +70,7 @@ create_kde2_config_header()
 
 add_subdirectory(dcop)
 add_subdirectory(kdecore)
-#add_subdirectory(libltdl)
+add_subdirectory(kdeui)
 
 if(BUILD_TUTORIAL)
     add_subdirectory(tutorial)

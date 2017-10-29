@@ -961,7 +961,7 @@ Q_UINT8* KMD5::rawDigest()
     if ( m_error == ERR_NONE )
         return s;
     else
-        return '\0';
+        return 0;
 }
 
 void KMD5::rawDigest( HASH bin )

@@ -782,7 +782,7 @@ find_msg (struct loaded_l10nfile *domain_file, const char *msgid)
    avoid the non-standard function stpcpy.  In GNU C Library this
    function is available, though.  Also allow the symbol HAVE_STPCPY
    to be defined.  */
-#if !HAVE_STPCPY
+#ifndef HAVE_STPCPY
 static char *
 stpcpy (char *dest, const char *src)
 {

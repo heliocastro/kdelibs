@@ -1,3 +1,5 @@
+include("${CMAKE_CURRENT_LIST_DIR}/kde2_library.cmake")
+
 function(create_kde2_config_header)
     include(CheckIncludeFiles)
     include(CheckFunctionExists)
@@ -16,11 +18,19 @@ function(create_kde2_config_header)
     check_function_exists("unsetenv" HAVE_UNSETENV)
     check_function_exists("stpcpy" HAVE_STPCPY)
     check_function_exists("getaddrinfo" HAVE_GETADDRINFO)
+    check_function_exists("random" HAVE_RANDOM)
+    check_function_exists("seteuid" HAVE_SETEUID)
+    check_function_exists("vsnprintf" HAVE_VSNPRINTF)
     check_struct_has_member("struct addrinfo" ai_addrlen "netdb.h" HAVE_STRUCT_ADDRINFO LANGUAGE C)
     check_struct_has_member("struct sockaddr_in6" sin6_port "netinet/in.h" HAVE_SOCKADDR_IN6 LANGUAGE C)
     check_struct_has_member("struct sockaddr_in6" sin6_scope_id "netinet/in.h" HAVE_SOCKADDR_IN6_SCOPE_ID LANGUAGE C)
     check_struct_has_member("struct sockaddr" sa_len "sys/socket.h" HAVE_SOCKADDR_SA_LEN LANGUAGE C)
+    set(KDE_COMPILER_VERSION ${CMAKE_CXX_COMPILER_VERSION})
+    set(KDE_COMPILING_OS ${CMAKE_HOST_SYSTEM_NAME})
+    set(KDE_DISTRIBUTION_TEXT "Restoration Project")
 
-    configure_file(${PROJECT_SOURCE_DIR}/config.h.bot ${PROJECT_BINARY_DIR}/config.h)
+    configure_file(${PROJECT_SOURCE_DIR}/config.h.in ${PROJECT_BINARY_DIR}/config.h)
     include_directories(${PROJECT_BINARY_DIR})
 endfunction()
+
+
