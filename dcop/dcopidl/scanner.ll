@@ -28,9 +28,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 class QString;
 
-#ifndef KDE_USE_FINAL
-#include "yacc.cc.h"
-#endif
+#include "yacc.hpp"
 
 extern int idl_line_no;
 int comment_mode;

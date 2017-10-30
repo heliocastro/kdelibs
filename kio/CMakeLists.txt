@@ -1,0 +1,186 @@
+add_subdirectory(klauncher)
+add_subdirectory(kded)
+#add_subdirectory(file)
+#add_subdirectory(http)
+#add_subdirectory(pics)
+#add_subdirectory(tests)
+#add_subdirectory(ksendbugmail)
+#add_sibdirecotry(kpac)
+
+set(ksycoca_SOURCES
+    kdirwatch.cpp
+    ktrader.cpp
+    ktraderparse.cpp
+    ktraderparsetree.cpp
+    kservicefactory.cpp
+    kservicetype.cpp
+    kmimetype.cpp
+    kservicegroup.cpp
+    kuserprofile.cpp
+    kservicegroupfactory.cpp
+    kservice.cpp
+    kservicetypefactory.cpp
+    kurifilter.cpp
+    kfilterbase.cpp
+    kfilterdev.cpp
+    kshellcompletion.cpp
+    kurlcompletion.cpp
+    kautomount.cpp
+    krun.cpp
+    kfileitem.cpp
+    kdirlister.cpp
+    kimageio.cpp
+    lex.c
+    yacc.c
+    chmodjob.cpp
+    kscan.cpp
+    ktar.cpp
+    previewjob.cpp
+    )
+
+set(kio_SOURCES
+    kshred.cpp
+    kprotocolmanager.cpp
+    slave.cpp
+    slaveinterface.cpp
+    sessiondata.cpp
+    scheduler.cpp
+    connection.cpp
+    job.cpp
+    global.cpp
+    slaveconfig.cpp
+    netaccess.cpp
+    paste.cpp
+    kmimemagic.cpp
+    tcpslavebase.cpp
+    slavebase.cpp
+    passdlg.cpp
+    progressbase.cpp
+    defaultprogress.cpp
+    statusbarprogress.cpp
+    kdirnotify.cpp
+    observer.cpp
+    kemailsettings.cpp
+    authinfo.cpp
+    kprotocolinfo.cpp
+    kprotocolinfofactory.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/kdirnotify_stub.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/kdirnotify_skel.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/uiserver_stub.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/observer_skel.cpp
+    )
+
+kde2_kidl(kdirnotify kdirnotify.h)
+kde2_kidl(uiserver uiserver.h)
+kde2_kidl(observer observer.h)
+
+set(kio_uiserver_SOURCES
+    uiserver.cpp
+    renamedlg.cpp
+    skipdlg.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/uiserver_skel.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/observer_stub.cpp
+    )
+
+set(kio_HEADERS
+    authinfo.h
+    chmodjob.h
+    connection.h
+    defaultprogress.h
+    design.h
+    global.h
+    http_slave_defaults.h
+    ioslave_defaults.h
+    jobclasses.h
+    kautomount.h
+    kdirlister.h
+    kdirnotify.h
+    kdirwatch.h
+    kemailsettings.h
+    kfileitem.h
+    kfilterbase.h
+    kfilterdev.h
+    kimageio.h
+    kmdbase.h
+    kmimemagic.h
+    kmimetype.h
+    kpac.h
+    kprotocolinfo.h
+    kprotocolmanager.h
+    krun.h
+    kscan.h
+    kservicegroupfactory.h
+    kservicegroup.h
+    kservice.h
+    kservicetype.h
+    kshellcompletion.h
+    kshred.h
+    ktar.h
+    ktrader.h
+    ktypecode.h
+    kurifilter.h
+    kurlcompletion.h
+    kurlpixmapprovider.h
+    kuserprofile.h
+    netaccess.h
+    observer.h
+    passdlg.h
+    paste.h
+    previewjob.h
+    progressbase.h
+    renamedlg.h
+    scheduler.h
+    sessiondata.h
+    skipdlg.h
+    slavebase.h
+    slaveconfig.h
+    slave.h
+    slaveinterface.h
+    statusbarprogress.h
+    tcpslavebase.h
+    uiserver.h
+)
+
+set(kio_noinst_HEADERS
+    kservicetypefactory.h
+    kservicefactory.h
+    kmessageboxwrapper.h
+    ktraderparse.h
+    ktraderparsetree.h
+    yacc.h
+    kimageiofactory.h
+    kprotocolinfofactory.h
+    )
+
+qt2_wrap_cpp(kio_SOURCES
+    SOURCES
+        ${kio_HEADERS}
+        ${kio_noinst_HEADERS}
+    )
+
+kde2_library(kio
+    SOURCES
+        ${kio_SOURCES}
+    LIBS
+        kde2::kdeui
+        kde2::kdesu
+        kde2::kssl
+        ZLIB::ZLIB
+    )
+
+kde2_library(ksycoca
+    SOURCES
+        ${ksycoca_SOURCES}
+    LIBS
+       kde2::kio
+       ltdl
+    )
+
+kde2_module(kio_uiserver
+    SOURCES
+        ${kio_uiserver_SOURCES}
+    LIBS
+        kde2::ksycoca
+        kde2::kssl
+        kde2::kdesu
+    )

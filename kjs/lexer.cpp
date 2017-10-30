@@ -39,7 +39,7 @@
 using namespace KJS;
 
 #ifndef KDE_USE_FINAL
-#include "grammar.h"
+#include "grammar.hpp"
 #endif
 
 #include "lexer.lut.h"

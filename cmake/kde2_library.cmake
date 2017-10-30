@@ -45,6 +45,7 @@ function(kde2_library library_name)
         PUBLIC
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
             $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
             ${build_interface_includes}
             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${include_namespace_directory}>

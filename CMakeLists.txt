@@ -67,6 +67,7 @@ endif()
 find_package(X11 REQUIRED)
 
 find_package(BISON REQUIRED)
+find_package(FLEX REQUIRED)
 
 pkg_search_module(PCRE libpcre REQUIRED)
 
@@ -78,6 +79,7 @@ add_subdirectory(kdeui)
 add_subdirectory(kdesu)
 add_subdirectory(kssl)
 add_subdirectory(kjs)
+add_subdirectory(kio)
 
 if(BUILD_TUTORIAL)
     add_subdirectory(tutorial)

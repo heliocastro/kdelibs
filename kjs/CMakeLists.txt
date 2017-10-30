@@ -1,3 +1,9 @@
+bison_target(MyParser
+    grammar.y
+    ${CMAKE_CURRENT_BINARY_DIR}/grammar.cpp
+    COMPILE_FLAGS "-y -d -p kjsyy"
+    )
+
 set(libkjs_SOURCES
     array_object.cpp
     bool_object.cpp
@@ -24,7 +30,7 @@ set(libkjs_SOURCES
     testkjs.cpp
     types.cpp
     ustring.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/grammar.cpp
+    ${BISON_MyParser_OUTPUTS}
     )
 
 set(libkjs_HEADERS
@@ -35,7 +41,6 @@ set(libkjs_HEADERS
     debugger.h
     error_object.h
     function_object.h
-    grammar.h
     internal.h
     lexer.h
     lexer.lut.h
@@ -64,16 +69,6 @@ kde2_library(libkjs
         ${libkjs_SOURCES}
     LIBS
         ${PCRE_LIBRARIES}
-    )
-
-add_custom_command(TARGET libkjs
-    PRE_BUILD
-    COMMAND ${BISON_EXECUTABLE}
-    ARGS -d -y -p kjsyy ${CMAKE_CURRENT_SOURCE_DIR}/grammar.y -o grammar.cpp
-    COMMAND  mv
-    ARGS grammar.hpp grammar.h
-    DEPENDS grammar.y
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
 
 add_executable(testkjs testkjs.cpp)

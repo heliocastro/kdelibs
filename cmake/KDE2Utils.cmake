@@ -1,4 +1,6 @@
 include("${CMAKE_CURRENT_LIST_DIR}/kde2_library.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/kde2_kidl.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/kde2_module.cmake")
 
 # The unfortunate global definitions
 add_definitions(-DQT_NO_TRANSLATION -DQT_CLEAN_NAMESPACE -DQT_NO_COMPAT -DQT_NO_ASCII_CAST)
@@ -19,6 +21,10 @@ function(create_kde2_config_header)
     check_include_files(sys/select.h HAVE_SYS_SELECT_H)
     check_include_files(sys/param.h;sys/mount.h HAVE_SYS_MOUNT_H)
     check_include_files(float.h HAVE_FLOAT_H)
+    check_include_files(mntent.h HAVE_MNTENT_H)
+    check_include_files(sys/mnttab.h HAVE_SYS_MNTTAB_H)
+    check_include_files(limits.h HAVE_LIMITS_H)
+    check_include_files(sys/ucred.h HAVE_SYS_UCRED_H)
 
     check_function_exists("getdomainname" HAVE_GETDOMAINNAME_PROTO)
     check_function_exists("gethostname" HAVE_GETHOSTNAME_PROTO)
@@ -33,6 +39,8 @@ function(create_kde2_config_header)
     check_function_exists("isinf" HAVE_FUNC_ISINF)
     check_function_exists("isnan" HAVE_FUNC_ISNAN)
     check_function_exists("finite" HAVE_FUNC_FINITE)
+    check_function_exists("setmntent" HAVE_SETMNTENT)
+    check_function_exists("getmntinfo" HAVE_GETMNTINFO)
 
     check_struct_has_member("struct addrinfo" ai_addrlen "netdb.h" HAVE_STRUCT_ADDRINFO LANGUAGE C)
     check_struct_has_member("struct sockaddr_in6" sin6_port "netinet/in.h" HAVE_SOCKADDR_IN6 LANGUAGE C)

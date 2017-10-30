@@ -1,4 +1,7 @@
 add_subdirectory(KDE-ICE)
+add_subdirectory(dcopidl)
+add_subdirectory(dcopidl2cpp)
+add_subdirectory(client)
 
 set(testdcop_SRCS
     testdcop.cpp
