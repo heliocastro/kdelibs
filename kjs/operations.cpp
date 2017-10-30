@@ -37,7 +37,7 @@
 #endif
 #endif /* HAVE_FUNC_ISINF */
 
-#if HAVE_FLOAT_H
+#ifdef HAVE_FLOAT_H
 #include <float.h>
 #endif
 

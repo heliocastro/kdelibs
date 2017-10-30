@@ -67,7 +67,7 @@ extern "C" {
 #include <sysent.h>
 #endif
 
-#if TIME_WITH_SYS_TIME
+#ifdef TIME_WITH_SYS_TIME
 #include <time.h>
 #endif
 

@@ -66,12 +66,18 @@ endif()
 
 find_package(X11 REQUIRED)
 
+find_package(BISON REQUIRED)
+
+pkg_search_module(PCRE libpcre REQUIRED)
+
 create_kde2_config_header()
 
 add_subdirectory(dcop)
 add_subdirectory(kdecore)
 add_subdirectory(kdeui)
 add_subdirectory(kdesu)
+add_subdirectory(kssl)
+add_subdirectory(kjs)
 
 if(BUILD_TUTORIAL)
     add_subdirectory(tutorial)
