@@ -35,9 +35,6 @@ kde2_library(libdcop
         Qt::Qt2
     )
 
-#install(TARGETS  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-
-#--------------------------------------------------------------
 
 set(dcopserver_SRCS
     dcopserver.cpp
@@ -48,8 +45,23 @@ qt2_wrap_cpp(dcopserver_SRCS
     SOURCES
         dcopserver.h
     )
-add_library(dcopserver MODULE ${dcopserver_SRCS})
-target_link_libraries(dcopserver PRIVATE kde2::dcop)
-set_target_properties(dcopserver PROPERTIES
-    LINK_FLAGS "-Wl,--as-needed -Wl,--no-undefined"
-)
+add_executable(dcopserver ${dcopserver_SRCS})
+target_link_libraries(dcopserver
+    kde2::dcop
+    )
+
+set(testdcop_SRCS testdcop.cpp)
+qt2_wrap_cpp(testdcop_SRCS
+    SOURCES
+        testdcop.h
+    )
+add_executable(testdcop
+    ${testdcop_SRCS}
+    )
+target_link_libraries(testdcop kde2::kdecore)
+
+#add_executable(testdcopc
+#    testdcopc.c
+#    dcopc.c
+#    $<TARGET_OBJECTS:kICE>
+#    )

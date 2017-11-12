@@ -1,6 +1,7 @@
 include("${CMAKE_CURRENT_LIST_DIR}/kde2_library.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/kde2_kidl.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/kde2_module.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/kde2_icon.cmake")
 
 # The unfortunate global definitions
 add_definitions(-DQT_NO_TRANSLATION -DQT_CLEAN_NAMESPACE -DQT_NO_COMPAT -DQT_NO_ASCII_CAST)

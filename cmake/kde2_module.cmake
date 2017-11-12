@@ -64,4 +64,23 @@ function(kde2_module library_name)
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}/kde2"
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/kde2"
         )
+
+    foreach(prop STATIC_LIB LT_DEPENDENCY_LIBS LT_VERSION_CURRENT LT_VERSION_AGE LT_VERSION_REVISION
+        LT_INSTALLED LT_SHOULDNOTLINK LT_DLOPEN LT_DLPREOPEN)
+    get_target_property(LAPROP_${prop} ${library_name} ${prop})
+    if(LAPROP_${prop} EQUAL "NOTFOUND")
+        set(LAPROP_${prop} "")
+        endif()
+    endforeach()
+
+    get_filename_component(LAPROP_SONAME ${output_name} NAME)
+
+    configure_file(${PROJECT_SOURCE_DIR}/cmake/kde2_libtool_template.la.in
+        ${CMAKE_CURRENT_BINARY_DIR}/${output_name}.la
+        @ONLY
+        )
+
+    install(FILES {CURRENT_BINARY_DIR}/${output_name}.la
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/kde2"
+        )
 endfunction()

@@ -1,11 +1,11 @@
 add_subdirectory(klauncher)
 add_subdirectory(kded)
-#add_subdirectory(file)
-#add_subdirectory(http)
-#add_subdirectory(pics)
-#add_subdirectory(tests)
+add_subdirectory(file)
+add_subdirectory(http)
+add_subdirectory(pics)
+add_subdirectory(tests)
 #add_subdirectory(ksendbugmail)
-#add_sibdirecotry(kpac)
+add_subdirectory(kpac)
 
 set(ksycoca_SOURCES
     kdirwatch.cpp

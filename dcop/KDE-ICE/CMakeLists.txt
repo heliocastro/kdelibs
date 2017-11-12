@@ -30,5 +30,7 @@ target_compile_definitions(kICE PRIVATE
     -DUNIXCONN
     -DANSICPP
     )
-target_compile_options(kICE PRIVATE -fPIC)
+set_target_properties(kICE PROPERTIES
+	POSITION_INDEPENDENT_CODE ON
+	)
 target_include_directories(kICE PRIVATE ${PROJECT_SOURCE_DIR}/dcop)

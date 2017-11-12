@@ -5,6 +5,8 @@
    This file is licensed under LGPL version 2.
 */
 
+using namespace std;
+
 #include <qlayout.h>
 #include <qpushbutton.h>
 

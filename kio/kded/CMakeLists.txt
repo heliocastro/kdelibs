@@ -49,7 +49,7 @@ kde2_module(kbuildsycoca_module
     )
 
 add_executable(kded ${kded_module_SOURCES})
-target_link_libraries(kded 
+target_link_libraries(kded
     Qt::Qt2
     kde2::dcop
     kde2::ksycoca

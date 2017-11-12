@@ -5,7 +5,7 @@ set(libkpac_SOURCES
     kpac_discovery.cpp
     )
 
-set(kpac_noint_HEADERS
+set(kpac_noinst_HEADERS
     kproxybindings.h
     kpac_impl.h
     kpac_downloader.h
@@ -13,14 +13,15 @@ set(kpac_noint_HEADERS
     dhcp.h
     )
 
-qt2_wrap_cpp(kpac_SOURCES
-    ${kpac_noint_HEADERS}
+qt2_wrap_cpp(libkpac_SOURCES
+    SOURCES
+        ${kpac_noinst_HEADERS}
     )
 
-add_library(libkpac MODULE
-        ${kpac_SOURCES}
-        )
-target_link_libraries(libkpac
+kde2_module(libkpac
+    SOURCES
+        ${libkpac_SOURCES}
+    LIBS
         kde2::kio
         kde2::kjs
     )
