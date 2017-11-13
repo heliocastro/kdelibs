@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
 project(kdelibs
     VERSION 2.2.2
-	LANGUAGES C CXX)
+    LANGUAGES C CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
