@@ -30,6 +30,7 @@ function(kde2_module library_name)
             ${_lib_LIBS}
         PRIVATE
             ${_lib_PRIVATE_LIBS}
+            Qt::Qt2
         )
 
     # We need iteract over the multiple directory list
@@ -73,7 +74,7 @@ function(kde2_module library_name)
         @ONLY
         )
 
-    install(FILES {CURRENT_BINARY_DIR}/${output_name}.la
-        DESTINATION "${CMAKE_INSTALL_FULL_LIBDIR}/kde2"
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${output_name}.la
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/kde2"
         )
 endfunction()

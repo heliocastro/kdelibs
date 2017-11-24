@@ -64,6 +64,11 @@ if(SYSTEM_JPEG)
     pkg_search_module(XMU xmu REQUIRED)
 endif()
 
+find_package(TIFF)
+if(TIFF_FOUND)
+    set(HAVE_LIBTIFF ON)
+endif()
+
 find_package(X11 REQUIRED)
 
 find_package(BISON REQUIRED)
@@ -80,6 +85,7 @@ add_subdirectory(kdesu)
 add_subdirectory(kssl)
 add_subdirectory(kjs)
 add_subdirectory(kio)
+add_subdirectory(kimgio)
 
 if(BUILD_TUTORIAL)
     add_subdirectory(tutorial)
