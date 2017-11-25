@@ -42,6 +42,6 @@ add_executable(kurlrequestertest kurlrequestertest.cpp)
 target_link_libraries(kurlrequestertest kde2::kfile)
 
 install(FILES kpropsdlgplugin.desktop
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/servicetypes
+    DESTINATION ${KDE2_SERVICETYPESDIR}
     )
 
