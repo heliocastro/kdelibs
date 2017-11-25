@@ -4,7 +4,7 @@ function(kde2_module library_name)
     include(GenerateExportHeader)
     include(CMakePackageConfigHelpers)
 
-    set(oneValueArgs OUTPUT_NAME)
+    set(oneValueArgs OUTPUT_NAME DESKTOP_FILE)
     set(multiValueArgs
         LIBS
         PRIVATE_LIBS
@@ -77,4 +77,10 @@ function(kde2_module library_name)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${output_name}.la
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/kde2"
         )
+
+    if(_lib_DESKTOP_FILE)
+        install(FILES ${_lib_DESKTOP_FILE}
+            DESTINATION ${CMAKE_INSTALL_DATADIR}/services/
+            )
+    endif()
 endfunction()
