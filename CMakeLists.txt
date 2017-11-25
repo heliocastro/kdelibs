@@ -86,11 +86,4 @@ add_subdirectory(kssl)
 add_subdirectory(kjs)
 add_subdirectory(kio)
 add_subdirectory(kimgio)
-
-if(BUILD_TUTORIAL)
-    add_subdirectory(tutorial)
-endif()
-
-if(BUILD_EXAMPLES)
-    add_subdirectory(examples)
-endif()
+add_subdirectory(kfile)

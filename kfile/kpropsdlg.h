@@ -38,6 +38,7 @@
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
+class QComboBox;
 class KLineEdit;
 class KURLRequester;
 

@@ -55,7 +55,7 @@
 #include <qlist.h>
 #include <qstring.h>
 
-#include <iostream.h>
+#include <iostream>
 
 #include "kaclmanipulation.h"
 
@@ -185,9 +185,9 @@ KACLEntry *KACLEntry::GetACLEntry (acl_entry_t acl)
 
 	acl_permset_t perms;
 	if (!acl_get_permset(acl, &perms)) {
-		e->access_r = (*perms & ACL_READ);
-		e->access_w = (*perms & ACL_WRITE);
-		e->access_x = (*perms & ACL_EXECUTE);
+        acl_add_perm(perms, ACL_READ);
+        acl_add_perm(perms, ACL_WRITE);
+        acl_add_perm(perms, ACL_EXECUTE);
 	} else {
 		kdDebug() << "acl-get_permset failed: " << strerror(errno) << endl;
 		e->error = true;
