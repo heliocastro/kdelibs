@@ -39,7 +39,7 @@ set(PRIVATE_HEADERS
     kdeprintcheck.h plugincombobox.h
     )
 
-set(PUBLIC_HEADERS kprinter.h)
+set(PUBLIC_HEADERS kprintdialogpage.h kpreloadobject.h)
 
 qt2_wrap_cpp(KDEPRINT_SOURCES
     SOURCES
@@ -51,6 +51,6 @@ kde2_library(kdeprint
     SOURCES
         ${KDEPRINT_SOURCES}
     LIBS
-        kde2:kparts
+        kde2::kparts
         ZLIB::ZLIB
     )
