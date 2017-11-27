@@ -70,9 +70,7 @@ set(kio_SOURCES
     ${CMAKE_CURRENT_BINARY_DIR}/observer_skel.cpp
     )
 
-kde2_kidl(kdirnotify kdirnotify.h)
-kde2_kidl(uiserver uiserver.h)
-kde2_kidl(observer observer.h)
+kde2_kidl(kdirnotify.h uiserver.h observer.h)
 
 set(kio_uiserver_SOURCES
     uiserver.cpp
@@ -172,8 +170,8 @@ kde2_library(ksycoca
     SOURCES
         ${ksycoca_SOURCES}
     LIBS
-       kde2::kio
-       ltdl
+        kde2::kio
+        ltdl
     )
 
 kde2_module(kio_uiserver
