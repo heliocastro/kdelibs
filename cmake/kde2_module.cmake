@@ -4,7 +4,10 @@ function(kde2_module library_name)
     include(GenerateExportHeader)
     include(CMakePackageConfigHelpers)
 
-    set(oneValueArgs OUTPUT_NAME DESKTOP_FILE)
+    set(oneValueArgs
+        OUTPUT_NAME
+        DESKTOP_FILE
+        )
     set(multiValueArgs
         LIBS
         PRIVATE_LIBS
@@ -12,6 +15,9 @@ function(kde2_module library_name)
         COMPILE_DEFINITIONS
         SOURCES
         INCLUDE_DIRECTORIES
+        )
+    set(options
+        ALLOW_UNDEFINED
         )
     cmake_parse_arguments(_lib "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
@@ -55,8 +61,13 @@ function(kde2_module library_name)
             ${_lib_COMPILE_DEFINITIONS}
             )
     endif()
+
+    if(NOT ${_lib_ALLOW_UNDEFINED})
+        set(link_flags "-Wl,--no-undefined")
+    endif()
+
     set_target_properties(${library_name} PROPERTIES
-        LINK_FLAGS "-Wl,--as-needed -Wl,--no-undefined"
+        LINK_FLAGS "-Wl,--as-needed ${link_flags}"
         OUTPUT_NAME ${output_name}
         PREFIX ""
         )

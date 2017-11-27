@@ -1,13 +1,13 @@
 add_subdirectory(management)
-#add_subdirectory(lpdunix)
-#add_subdirectory(lpd)
-#add_subdirectory(rlpr)
+add_subdirectory(lpdunix)
+add_subdirectory(lpd)
+add_subdirectory(rlpr)
 #add_subdirectory(ext)
 #add_subdirectory(filters)
 #add_subdirectory(pics)
 #add_subdirectory(tests)
 
-kde2_kidl(kdeprintd.skel)
+kde2_kidl(kdeprintd.h)
 
 set(KDED_KDEPRINTD_SOURCES
     kdeprintd_skel.cpp kdeprintd.cpp kprintprocess.cpp
@@ -16,6 +16,11 @@ set(KDED_KDEPRINTD_SOURCES
 kde2_module(libkded_kdeprintd
     SOURCES
         ${KDED_KDEPRINTD_SOURCES}
+    LIBS
+        kde2::kdeui
+        kde2::kdecore
+        kde2::kio
+    ALLOW_UNDEFINED
     )
 
 set(KDEPRINT_SOURCES

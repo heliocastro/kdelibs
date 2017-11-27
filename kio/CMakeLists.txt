@@ -164,6 +164,8 @@ kde2_library(kio
         kde2::kdesu
         kde2::kssl
         ZLIB::ZLIB
+    INCLUDE_DIRECTORIES
+        ${CMAKE_CURRENT_SOURCE_DIR}/kded
     )
 
 kde2_library(ksycoca

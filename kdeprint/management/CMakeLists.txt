@@ -26,7 +26,7 @@ set(PRIVATE_HEADERS
     kmspecialprinterdlg.h kmwlocal.h
     )
 
-qt2_wrap_moc(KDEPRINT_MANAGEMENT_SOURCES
+qt2_wrap_cpp(KDEPRINT_MANAGEMENT_SOURCES
     SOURCES
         ${PUBLIC_HEADERS}
         ${PRIVATE_HEADERS}

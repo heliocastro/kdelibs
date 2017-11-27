@@ -65,4 +65,5 @@ function(create_kde2_config_header)
     add_definitions(-DHAVE_CONFIG_H)
 endfunction()
 
-set(KDE2_SERVICETYPESDIR ${CMAKE_INSTALL_DATADIR}/servicetypes CACHE STRING "KDE 2 ServiceTypes dir")
+set(KDE2_SERVICETYPESDIR ${CMAKE_INSTALL_DATADIR}/servicetypes CACHE STRING "KDE2 ServiceTypes dir")
+set(KDE2_DATADIR ${CMAKE_INSTALL_DATADIR} CACHE STRING "KDE2 Data Dir")
