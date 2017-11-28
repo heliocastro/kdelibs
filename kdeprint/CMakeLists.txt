@@ -4,7 +4,7 @@ add_subdirectory(lpd)
 add_subdirectory(rlpr)
 #add_subdirectory(ext)
 #add_subdirectory(filters)
-#add_subdirectory(pics)
+add_subdirectory(pics)
 #add_subdirectory(tests)
 
 kde2_kidl(kdeprintd.h)
