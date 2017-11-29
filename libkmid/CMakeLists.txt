@@ -1,0 +1,48 @@
+set(PUBLIC_HEADERS
+    midiout.h
+    player.h
+    track.h
+    midimapper.h
+    midfile.h
+    dattypes.h
+    midistat.h
+    deviceman.h
+    synthout.h
+    fmout.h
+    gusout.h
+    alsaout.h
+    voiceman.h
+    notearray.h
+    mt32togm.h
+    midispec.h
+    libkmid.h
+    )
+
+set(LIBKMID_SOURCES
+    midiout.cc
+    player.cc
+    track.cc
+    midimapper.cc
+    midfile.cc
+    dattypes.cc
+    midistat.cc
+    deviceman.cc
+    synthout.cc
+    fmout.cc
+    gusout.cc
+    alsaout.cc
+    voiceman.cc
+    mt32togm.cc
+    notearray.cc
+    libkmid.cc
+    )
+
+kde2_library(libkmid
+    SOURCES
+        ${LIBKMID_SOURCES}
+    INCLUDE_DIRECTORIES
+        ${ALSA_INCLUDE_DIRS}
+    LIBS
+        kde2::kdecore
+        ${ALSA_LIBRARY}
+    )

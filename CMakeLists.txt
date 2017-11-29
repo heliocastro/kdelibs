@@ -69,6 +69,8 @@ if(TIFF_FOUND)
     set(HAVE_LIBTIFF ON)
 endif()
 
+find_package(ALSA)
+
 find_package(X11 REQUIRED)
 
 find_package(BISON REQUIRED)
@@ -89,3 +91,8 @@ add_subdirectory(kimgio)
 add_subdirectory(kfile)
 add_subdirectory(kparts)
 add_subdirectory(kdeprint)
+if(ALSA_FOUND)
+    add_subdirectory(libkmid)
+endif()
+add_subdirectory(kconf_update)
+add_subdirectory(doc)

@@ -1,9 +1,7 @@
-macro(KDE2_KIDL idlfiles)
-    foreach(Input ${idlfiles})
+macro(KDE2_KIDL)
+    foreach(Input ${ARGN})
         get_filename_component(FILENAME ${Input} NAME_WE)
         get_filename_component(FULLFILENAME ${Input} ABSOLUTE)
-
-        message(STATUS "${FILENAME} ${FULLFILENAME}")
 
         add_custom_command(OUTPUT ${FILENAME}.kidl
             COMMAND dcopidl ${FULLFILENAME} > ${FILENAME}.kidl

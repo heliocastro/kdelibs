@@ -28,20 +28,18 @@ macro(KDE2_STDICON)
     set(multiValueArgs FILES)
     cmake_parse_arguments(_ico "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
     foreach(real_icon ${_ico_FILES})
-        foreach(size 16 24 32 48 64)
-            message(STATUS "hi${size}-app-${real_icon}.png")
-            if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/hi${size}-app-${real_icon}.png")
-                set(outdir "${KDE2_DATADIR}/apps/${_ico_OUTPUT_DIR}")
-                install(FILES "hi${size}-app-${real_icon}.png"
-                    DESTINATION "${outdir}/hicolor/${size}x${size}/apps"
-                    )
-            endif()
-            if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/hi${size}-action-${real_icon}.png")
-                set(outdir "${KDE2_DATADIR}/actions/${_ico_OUTPUT_DIR}")
-                install(FILES "hi${size}-action-${real_icon}.png"
-                    DESTINATION "${outdir}/hicolor/${size}x${size}/actions"
-                    )
-            endif()
+        foreach(size 16 22 32 48 64)
+            foreach(type app action)
+                if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/hi${size}-${type}-${real_icon}.png")
+                    set(outdir "${KDE2_DATADIR}/${type}s/${_ico_OUTPUT_DIR}")
+                    string(REPLACE "hi${size}-${type}-" "" output_filename "hi${size}-${type}-${real_icon}.png")
+                    install(
+                        FILES "hi${size}-${type}-${real_icon}.png"
+                        DESTINATION "${outdir}/hicolor/${size}x${size}/${type}s"
+                        RENAME ${output_filename}
+                        )
+                endif()
+            endforeach()
         endforeach()
     endforeach()
 endmacro()
