@@ -6,6 +6,9 @@ add_subdirectory(pics)
 add_subdirectory(tests)
 #add_subdirectory(ksendbugmail)
 add_subdirectory(kpac)
+add_subdirectory(gzip)
+add_subdirectory(bzip2)
+add_subdirectory(kssld)
 
 set(ksycoca_SOURCES
     kdirwatch.cpp

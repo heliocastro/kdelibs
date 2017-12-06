@@ -78,10 +78,16 @@ find_package(FLEX REQUIRED)
 
 pkg_search_module(PCRE libpcre REQUIRED)
 
+find_package(LibXml2 REQUIRED)
+find_package(LibXslt REQUIRED)
+
+find_package(BZip2 REQUIRED)
+
 create_kde2_config_header()
 
 add_subdirectory(dcop)
 add_subdirectory(kdecore)
+add_subdirectory(kdoctools)
 add_subdirectory(kdeui)
 add_subdirectory(kdesu)
 add_subdirectory(kssl)

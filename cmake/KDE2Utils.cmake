@@ -66,6 +66,7 @@ function(create_kde2_config_header)
 endfunction()
 
 set(KDE2_SERVICETYPESDIR ${CMAKE_INSTALL_DATADIR}/servicetypes CACHE STRING "KDE2 ServiceTypes dir")
+set(KDE2_SERVICESDIR ${CMAKE_INSTALL_DATADIR}/services CACHE STRING "KDE2 Services dir")
 set(KDE2_DATADIR ${CMAKE_INSTALL_DATADIR} CACHE STRING "KDE2 Data dir")
 set(KDE2_HTMLDIR ${CMAKE_INSTALL_DOCDIR}/HTML CACHE STRING "KDE2 Doc dir")
 

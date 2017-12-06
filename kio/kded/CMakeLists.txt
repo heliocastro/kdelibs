@@ -32,7 +32,7 @@ kde2_module(kded_module
         ${kded_module_SOURCES}
     PRIVATE_LIBS
         Qt::Qt2
-        kde2::dcop
+        kde2::DCOP
         kde2::ksycoca
     OUTPUT_NAME
         kded
@@ -51,6 +51,6 @@ kde2_module(kbuildsycoca_module
 add_executable(kded ${kded_module_SOURCES})
 target_link_libraries(kded
     Qt::Qt2
-    kde2::dcop
+    kde2::DCOP
     kde2::ksycoca
     )

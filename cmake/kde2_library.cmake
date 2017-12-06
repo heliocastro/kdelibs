@@ -6,6 +6,9 @@ function(kde2_library library_name)
 
     set(BUILD_SHARED_LIBS ON)
 
+    set(oneValueArgs
+        VERSION
+        )
     set(multiValueArgs
         LIBS
         PRIVATE_LIBS
@@ -60,9 +63,18 @@ function(kde2_library library_name)
             ${_lib_COMPILE_DEFINITIONS}
             )
     endif()
+
+    set(library_version ${PROJECT_VERSION})
+    set(library_soversion ${PROJECT_VERSION_MAJOR})
+    if(_lib_VERSION)
+        set(library_version ${_lib_VERSION})
+        string(REPLACE "." ";" list_version ${_lib_VERSION})
+        list(GET list_version 0 library_soversion)
+    endif()
+
     set_target_properties(${library_name} PROPERTIES
-        SOVERSION ${PROJECT_VERSION_MAJOR}
-        VERSION ${PROJECT_VERSION}
+        VERSION ${library_version}
+        SOVERSION ${library_soversion}
         LINK_FLAGS "-Wl,--as-needed -Wl,--no-undefined"
         OUTPUT_NAME ${output_name}
         EXPORT_NAME ${output_name}

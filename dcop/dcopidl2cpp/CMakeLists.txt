@@ -9,3 +9,7 @@ target_link_libraries(dcopidl2cpp
     PRIVATE
         Qt::Qt2
     )
+
+install(TARGETS dcopidl2cpp
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    )

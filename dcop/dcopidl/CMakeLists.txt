@@ -25,5 +25,9 @@ target_include_directories(dcopidl
 target_link_libraries(dcopidl
     PRIVATE
         Qt::Qt2
-        kde2::dcop
+        kde2::DCOP
+    )
+
+install(TARGETS dcopidl
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )

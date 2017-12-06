@@ -27,12 +27,14 @@ qt2_wrap_cpp(libdcop_SRCS
         dcopclient.h
     )
 
-kde2_library(libdcop
+kde2_library(libDCOP
     SOURCES
         ${libdcop_SRCS}
         $<TARGET_OBJECTS:kICE>
     LIBS
         Qt::Qt2
+    VERSION
+        1.0.0
     )
 
 
@@ -46,7 +48,7 @@ qt2_wrap_cpp(dcopserver_SRCS
         dcopserver.h
     )
 add_executable(dcopserver ${dcopserver_SRCS})
-target_link_libraries(dcopserver kde2::dcop)
+target_link_libraries(dcopserver kde2::DCOP)
 install(TARGETS dcopserver RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 set(testdcop_SRCS testdcop.cpp)
