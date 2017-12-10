@@ -83,80 +83,76 @@ set(kio_uiserver_SOURCES
     ${CMAKE_CURRENT_BINARY_DIR}/observer_stub.cpp
     )
 
-set(kio_HEADERS
-    authinfo.h
-    chmodjob.h
-    connection.h
-    defaultprogress.h
-    design.h
-    global.h
-    http_slave_defaults.h
-    ioslave_defaults.h
-    jobclasses.h
-    kautomount.h
-    kdirlister.h
-    kdirnotify.h
-    kdirwatch.h
-    kemailsettings.h
-    kfileitem.h
-    kfilterbase.h
-    kfilterdev.h
-    kimageio.h
-    kmdbase.h
-    kmimemagic.h
-    kmimetype.h
-    kpac.h
-    kprotocolinfo.h
-    kprotocolmanager.h
-    krun.h
-    kscan.h
-    kservicegroupfactory.h
-    kservicegroup.h
-    kservice.h
-    kservicetype.h
-    kshellcompletion.h
-    kshred.h
-    ktar.h
-    ktrader.h
-    ktypecode.h
-    kurifilter.h
-    kurlcompletion.h
-    kurlpixmapprovider.h
-    kuserprofile.h
-    netaccess.h
-    observer.h
-    passdlg.h
-    paste.h
-    previewjob.h
-    progressbase.h
-    renamedlg.h
-    scheduler.h
-    sessiondata.h
-    skipdlg.h
-    slavebase.h
-    slaveconfig.h
-    slave.h
-    slaveinterface.h
-    statusbarprogress.h
-    tcpslavebase.h
+set(kio_uiserver_HEADERS
     uiserver.h
+    renamedlg.h
+    skipdlg.h
+    )
+
+set(ksycoca_HEADERS
+    kdirwatch.h
+    ktrader.h ktraderparse.h ktraderparsetree.h
+    kservicetypefactory.h kservicetype.h
+    kmimetype.h kservicegroup.h
+    kservice.h kservicefactory.h
+    kuserprofile.h kservicegroupfactory.h
+    kurifilter.h
+    kfilterbase.h kfilterdev.h
+    kshellcompletion.h kurlcompletion.h
+    kautomount.h krun.h
+    kfileitem.h kdirlister.h kimageio.h
+    chmodjob.h kscan.h ktar.h previewjob.h
+    )
+
+set(kio_HEADERS
+    kshred.h
+    kprotocolmanager.h
+    slave.h slaveinterface.h
+    sessiondata.h
+    scheduler.h
+    connection.h
+    global.h
+    slaveconfig.h
+    netaccess.h paste.h
+    kmimemagic.h
+    tcpslavebase.h slavebase.h passdlg.h
+    progressbase.h defaultprogress.h
+    statusbarprogress.h
+    kemailsettings.h authinfo.h
+    kprotocolinfo.h kprotocolinfofactory.h
+    jobclasses.h observer.h
 )
 
-set(kio_noinst_HEADERS
+set(ksycoca_noinst_HEADERS
     kservicetypefactory.h
     kservicefactory.h
     kmessageboxwrapper.h
     ktraderparse.h
     ktraderparsetree.h
-    yacc.h
+    )
+
+set(kio_noinst_HEADERS
     kimageiofactory.h
     kprotocolinfofactory.h
     )
+
+
+qt2_wrap_cpp(ksycoca_SOURCES
+    SOURCES
+        ${ksycoca_HEADERS}
+        ${ksycoca_noinst_HEADERS}
+    )
+
 
 qt2_wrap_cpp(kio_SOURCES
     SOURCES
         ${kio_HEADERS}
         ${kio_noinst_HEADERS}
+    )
+
+qt2_wrap_cpp(kio_uiserver_SOURCES
+    SOURCES
+        ${kio_uiserver_HEADERS}
     )
 
 kde2_library(kio
