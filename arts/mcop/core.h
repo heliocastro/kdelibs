@@ -3,6 +3,9 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include "object.h"
+#include "anyref.h"
+#include "type.h"
 #include "common.h"
 
 namespace Arts {
@@ -12,6 +15,7 @@ enum MethodType {methodOneway = 1, methodTwoway = 2};
 enum AttributeType {streamIn = 1, streamOut = 2, streamMulti = 4, attributeStream = 8, attributeAttribute = 16, streamAsync = 32, streamDefault = 64};
 enum TypeIdentification {tiUnknown = 0, tiVoid = 1, tiLong = 2, tiByte = 3, tiString = 4, tiBoolean = 5, tiFloat = 6, tiEnum = 128, tiType = 129, tiInterface = 130};
 };
+
 namespace Arts {
 class Header : public Arts::Type {
 public:

@@ -4,3 +4,5 @@ target_link_libraries(dcop
         Qt::Qt2
         kde2::DCOP
     )
+install(TARGETS dcop
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

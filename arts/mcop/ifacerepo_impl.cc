@@ -21,7 +21,9 @@
     */
 
 #include "ifacerepo_impl.h"
+#include "mcoputils.h"
 #include "debug.h"
+
 #include <iostream>
 #include <stdio.h>
 

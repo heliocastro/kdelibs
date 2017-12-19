@@ -16,3 +16,4 @@ kde2_library(kdesu
     )
 
 add_executable(kdesu_stub kdesu_stub.c)
+install(TARGETS kdesu_stub RUNTIME DESTINATION ${KDE2_BINDIR})

@@ -24,7 +24,7 @@
 #define _DOM_DOMStringImpl_h_
 
 #include <qstring.h>
-#include <dom_misc.h>
+#include <dom/dom_misc.h>
 #include <khtmllayout.h>
 
 template<class type> class QList;

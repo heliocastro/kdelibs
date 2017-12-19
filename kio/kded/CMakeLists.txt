@@ -48,9 +48,23 @@ kde2_module(kbuildsycoca_module
         kbuildsycoca
     )
 
+add_executable(kbuildsycoca ${kbuildsycoca_module_SOURCES})
+target_link_libraries(kbuildsycoca
+    Qt::Qt2
+    kde2::ksycoca
+    )
+
 add_executable(kded ${kded_module_SOURCES})
 target_link_libraries(kded
     Qt::Qt2
     kde2::DCOP
     kde2::ksycoca
     )
+
+add_executable(kdontchangethehostname khostname.cpp)
+target_link_libraries(kdontchangethehostname
+    kde2::kdecore
+    )
+
+install(TARGETS kbuildsycoca kded kdontchangethehostname
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

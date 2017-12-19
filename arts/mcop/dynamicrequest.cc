@@ -23,7 +23,9 @@
 #include "dynamicrequest.h"
 #include "core.h"
 #include "debug.h"
-#include <iostream.h>
+#include "dispatcher.h"
+
+#include <iostream>
 
 using namespace Arts;
 using namespace std;

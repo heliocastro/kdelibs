@@ -1,0 +1,5 @@
+dirlist(dirs)
+foreach(dir ${dirs})
+    file(GLOB dirfiles LIST_DIRECTORIES false ${dir}/*)
+    install(FILES ${dirfiles} DESTINATION ${KDE2_DATADIR}/ksgmltools2/${dir})
+endforeach()

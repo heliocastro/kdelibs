@@ -25,3 +25,6 @@ kde2_module(libkpac
         kde2::kio
         kde2::kjs
     )
+
+add_executable(kpac_dhcp_helper kpac_dhcp_helper.c)
+install(TARGETS kpac_dhcp_helper RUNTIME DESTINATION ${KDE2_BINDIR})

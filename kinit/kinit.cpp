@@ -80,7 +80,6 @@
 
 extern char **environ;
 
-extern int lt_dlopen_flag;
 static int X11fd = -1;
 static Display *X11display = 0;
 static int X11_startup_notify_fd = -1;
@@ -109,7 +108,6 @@ struct {
   int (*func)(int, char *[]);
   int (*launcher_func)(int);
   bool debug_wait;
-  int lt_dlopen_flag;
   QCString errorMsg;
 } d;
 
@@ -443,7 +441,6 @@ static pid_t launch(int argc, const char *_name, const char *args,
           }
        }
      }
-     lt_dlopen_flag = d.lt_dlopen_flag;
      if (!d.handle )
      {
         d.result = 2; // Try execing
@@ -1332,8 +1329,6 @@ int main(int argc, char **argv, char **envp)
    d.launcher_pid = 0;
    d.wrapper = 0;
    d.debug_wait = false;
-   d.lt_dlopen_flag = lt_dlopen_flag;
-   lt_dlopen_flag |= LTDL_GLOBAL;
    init_signals();
 
 

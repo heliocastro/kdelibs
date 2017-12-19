@@ -34,3 +34,4 @@ install(FILES lpd.print
     )
 
 add_executable(make_driver_db_lpd make_driver_db_lpd.c)
+install(TARGETS make_driver_db_lpd RUNTIME DESTINATION ${KDE2_BINDIR})

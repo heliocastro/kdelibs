@@ -24,7 +24,8 @@
 #include "dispatcher.h"
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
 #define queue cqueue
 #include <netdb.h>
 #undef queue

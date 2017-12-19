@@ -24,6 +24,8 @@
 #include "core.h"
 #include "startupmanager.h"
 #include "debug.h"
+#include "dispatcher.h"
+
 #include <assert.h>
 
 using namespace Arts;

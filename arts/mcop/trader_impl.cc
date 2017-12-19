@@ -1,11 +1,18 @@
 #include "core.h"
 #include "debug.h"
+#include "factory.h"
+#include "mcoputils.h"
+#include "dispatcher.h"
+
 #include <iostream>
 #include <fstream>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 using namespace Arts;
 using namespace std;

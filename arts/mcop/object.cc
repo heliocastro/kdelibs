@@ -23,11 +23,16 @@
 #include "object.h"
 #include "dispatcher.h"
 #include "flowsystem.h"
+#include "datapacket.h"
 #include "weakreference.h"
 #include "namedstore.h"
 #include "debug.h"
 #include "anyref.h"
-#include <stdio.h>
+#include "asyncstream.h"
+#include "mcoputils.h"
+
+#include <cstdio>
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;

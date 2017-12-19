@@ -30,6 +30,7 @@
 #include "unixserver.h"
 #include "connection.h"
 #include "notification.h"
+#include "objectmanager.h"
 
 #include <deque>
 #include <stack>
@@ -49,7 +50,6 @@ class ObjectReference;
 class FlowSystem_impl;
 class GlobalComm;
 class InterfaceRepo;
-class ObjectManager;
 class Object_skel;
 class ReferenceClean;
 class DelayedReturn;

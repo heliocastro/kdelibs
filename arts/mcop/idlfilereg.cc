@@ -21,6 +21,8 @@
     */
 
 #include "core.h"
+#include "dispatcher.h"
+#include "idlfilereg.h"
 
 using namespace Arts;
 

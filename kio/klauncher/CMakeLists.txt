@@ -10,3 +10,5 @@ add_executable(klauncher
     )
 
 target_link_libraries(klauncher kde2::ksycoca)
+
+install(TARGETS klauncher RUNTIME DESTINATION ${KDE2_BINDIR})

@@ -5,9 +5,4 @@ install(FILES kdeprint_collate.png kdeprint_collate_reverse.png kdeprint_color.p
     DESTINATION ${KDE2_DATADIR}/kdeprint/pics
     )
 
-kde2_stdicon(FILES kdeprint_job kdeprint_job_error kdeprint_job_process kdeprint_job_stopped kdeprint_printer
-    kdeprint_printer_class kdeprint_printer_class_stopped kdeprint_printer_defect kdeprint_printer_remote
-    kdeprint_printer_remote_stopped kdeprint_printer_stopped kdeprint_printer_remote_process
-    kdeprint_printer_process kdeprint_printer_class_process kdeprint_computer kdeprint_printer_infos
-    OUTPUT_DIR kdeprint/icons
-    )
+kde2_stdicon(OUTPUT_DIR "kdeprint/icons")

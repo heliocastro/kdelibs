@@ -71,4 +71,8 @@ kde2_library(kdecore
         ${X11_LIBRARIES}
     )
 
-#install(TARGETS  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+configure_file(kde-config.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/kde-config.cpp @ONLY)
+
+add_executable(kde-config ${CMAKE_CURRENT_BINARY_DIR}/kde-config.cpp)
+target_link_libraries(kde-config kde2::kdecore)
+install(TARGETS kde-config  RUNTIME DESTINATION ${KDE2_BINDIR})

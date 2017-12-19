@@ -84,6 +84,8 @@ find_package(LibXslt REQUIRED)
 
 find_package(BZip2 REQUIRED)
 
+find_package(Cups)
+
 create_kde2_config_header()
 
 add_subdirectory(dcop)
@@ -102,4 +104,9 @@ if(ALSA_FOUND)
     add_subdirectory(libkmid)
 endif()
 add_subdirectory(kconf_update)
+add_subdirectory(kinit)
+#add_subdirectory(arts)
+add_subdirectory(interfaces)
+add_subdirectory(kab)
+add_subdirectory(khtml)
 add_subdirectory(doc)

@@ -1,4 +1,5 @@
 #include "loopback.h"
+#include "dispatcher.h"
 #include "core.h"
 
 using namespace Arts;

@@ -182,20 +182,20 @@ protected:
 	{
 		if(newCapacity > capacity)
 		{
-			delete[] contents;
+			delete[] this->contents;
 			capacity = newCapacity;
-			contents = new T[capacity];
+			this->contents = new T[capacity];
 		}
 	}
 	RawDataPacket(int capacity, GenericDataChannel *channel)
 		:DataPacket<T>(channel), capacity(capacity)
 	{
-		size = capacity;
-		contents = new T[capacity];
+		this->size = capacity;
+		this->contents = new T[capacity];
 	}
 	~RawDataPacket()
 	{
-		delete[] contents;
+		delete[] this->contents;
 	}
 };
 

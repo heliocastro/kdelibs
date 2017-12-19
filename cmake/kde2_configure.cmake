@@ -19,6 +19,8 @@ function(create_kde2_config_header)
     check_include_files(limits.h HAVE_LIMITS_H)
     check_include_files(sys/ucred.h HAVE_SYS_UCRED_H)
     check_include_files(sys/acl.h ACL_H)
+    check_include_files(sys/time.h HAVE_SYS_TIME_H)
+    check_include_files(time.h HAVE_TIME_H)
 
     check_function_exists("getdomainname" HAVE_GETDOMAINNAME_PROTO)
     check_function_exists("gethostname" HAVE_GETHOSTNAME_PROTO)
@@ -46,6 +48,10 @@ function(create_kde2_config_header)
 
     if(ACL_H AND HAVE_ACL_GET_TAG_TYPE)
         set(USE_POSIX_ACL TRUE CACHE BOOL "Using posix ACL")
+    endif()
+
+    if(HAVE_SYS_TIME_H AND HAVE_TIME_H)
+        set(TIME_WITH_SYS_TIME TRUE CACHE BOOL "Define if you can safely include both <sys/time.h> and <time.h>")
     endif()
 
     set(KDE_COMPILER_VERSION ${CMAKE_CXX_COMPILER_VERSION})

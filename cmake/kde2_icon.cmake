@@ -25,21 +25,18 @@ endmacro()
 
 macro(KDE2_STDICON)
     set(oneValueArgs OUTPUT_DIR)
-    set(multiValueArgs FILES)
     cmake_parse_arguments(_ico "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
-    foreach(real_icon ${_ico_FILES})
-        foreach(size 16 22 32 48 64)
-            foreach(type app action)
-                if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/hi${size}-${type}-${real_icon}.png")
-                    set(outdir "${KDE2_DATADIR}/${type}s/${_ico_OUTPUT_DIR}")
-                    string(REPLACE "hi${size}-${type}-" "" output_filename "hi${size}-${type}-${real_icon}.png")
-                    install(
-                        FILES "hi${size}-${type}-${real_icon}.png"
-                        DESTINATION "${outdir}/hicolor/${size}x${size}/${type}s"
-                        RENAME ${output_filename}
-                        )
-                endif()
-            endforeach()
-        endforeach()
+    file(GLOB _ico_FILES LIST_DIRECTORIES false hi*.png)
+    foreach(icon_file ${_ico_FILES})
+        get_filename_component(real_icon ${icon_file} NAME)
+        string(REGEX REPLACE ".*([0-9][0-9]).*" "\\1" size ${real_icon})
+        string(REGEX REPLACE "^.*-([A-Za-z_]+).*" "\\1" name ${real_icon})
+        string(REGEX REPLACE "hi[0-9][0-9]-([A-Za-z_]+).*" "\\1" type ${real_icon})
+        set(outdir "${KDE2_DATADIR}/apps/${_ico_OUTPUT_DIR}")
+            install(
+                FILES ${real_icon}
+                DESTINATION "${outdir}/hicolor/${size}x${size}/${type}s"
+                RENAME ${name}.png
+                )
     endforeach()
 endmacro()

@@ -36,22 +36,22 @@ QString expandvars(const char *_input)
     bool changed = false;
     int index = result.find("${prefix}");
     if (index >= 0) {
-        result = result.replace(index, 9, "@prefix@");
+        result = result.replace(index, 9, "@CMAKE_INSTALL_PREFIX@");
         changed = true;
     }
     index = result.find("${exec_prefix}");
     if (index >= 0) {
-        result = result.replace(index, 14, "@exec_prefix@");
+        result = result.replace(index, 14, "@CMAKE_INSTALL_FULL_LIBEXECDIR@");
         changed = true;
     }
     index = result.find("$(exec_prefix)");
     if (index >= 0) {
-        result = result.replace(index, 14, "@exec_prefix@");
+        result = result.replace(index, 14, "@CMAKE_INSTALL_FULL_LIBEXECDIR@");
         changed = true;
     }
     index = result.find("$(prefix");
     if (index >= 0) {
-        result = result.replace(index, 9, "@prefix@");
+        result = result.replace(index, 9, "@CMAKE_INSTALL_PREFIX@");
         changed = true;
     }
     if (changed)
@@ -79,13 +79,13 @@ int main(int argc, char **argv)
 
     if (args->isSet("prefix"))
     {
-        printf("%s\n", expandvars("@prefix@").latin1());
+        printf("%s\n", expandvars("@CMAKE_INSTALL_PREFIX@").latin1());
         return 0;
     }
 
     if (args->isSet("exec-prefix"))
     {
-        printf("%s\n", expandvars("@exec_prefix@").latin1());
+        printf("%s\n", expandvars("@CMAKE_INSTALL_FULL_LIBEXECDIR@").latin1());
         return 0;
     }
 
@@ -152,20 +152,20 @@ int main(int argc, char **argv)
     if (!type.isEmpty())
     {
         const char *installprefixes[] = {
-            "apps",   "@kde_appsdir@",
-            "config", "@kde_confdir@",
-            "data",   "@kde_datadir@",
-            "exe",    "@kde_bindir@",
-            "html",   "@kde_htmldir@",
-            "icon",   "@kde_icondir@",
-            "lib",    "@libdir@",
-            "locale", "@kde_locale@",
-            "mime",   "@kde_mimedir@",
-            "services", "@kde_servicesdir@",
-            "servicetypes", "@kde_servicetypesdir@",
-            "sound", "@kde_sounddir@",
-            "templates", "@kde_templatesdir@",
-            "wallpaper", "@kde_wallpaperdir@",
+            "apps",   "@KDE2_APPSDIR@",
+            "config", "@KDE2_CONFDIR@",
+            "data",   "@KDE2_DATADIR@",
+            "exe",    "@KDE2_BINDIR@",
+            "html",   "@KDE2_HTMLDIR@",
+            "icon",   "@KDE2_ICONDIR@",
+            "lib",    "@CMAKE_INSTALL_FULL_LIBDIR@",
+            "locale", "@KDE2_LOCALE@",
+            "mime",   "@KDE2_MIMEDIR@",
+            "services", "@KDE2_SERVICESDIR@",
+            "servicetypes", "@KDE2_SERVICETYPESDIR@",
+            "sound", "@KDE2_SOUNDDIR@",
+            "templates", "@KDE2_TEMPLATESDIR@",
+            "wallpaper", "@KDE2_WALLPAPERDIR@",
             0, 0
         };
         int index = 0;

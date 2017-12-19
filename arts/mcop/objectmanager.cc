@@ -27,7 +27,9 @@
 #include "dispatcher.h"
 #include "extensionloader.h"
 #include "debug.h"
-#include <stdio.h>
+#include "core.h"
+
+#include <cstdio>
 #include <unistd.h>
 #include <iostream>
 

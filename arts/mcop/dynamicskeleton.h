@@ -23,6 +23,7 @@
 #ifndef ARTS_MCOP_DYNAMICSKELETON_H
 #define ARTS_MCOP_DYNAMICSKELETON_H
 
+
 #include "object.h"
 
 namespace Arts {

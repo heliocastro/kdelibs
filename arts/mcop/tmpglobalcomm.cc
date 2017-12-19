@@ -23,8 +23,13 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <cstdio>
+#include <cstdlib>
+#include "unistd.h"
+
 #include "core.h"
 #include "mcoputils.h"
+#include "factory.h"
 
 using namespace std;
 using namespace Arts;

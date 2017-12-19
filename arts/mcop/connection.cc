@@ -23,9 +23,14 @@
 #include "connection.h"
 #include "dispatcher.h"
 #include "debug.h"
+#include "core.h"
+#include "mcoputils.h"
+
 #include <stdio.h>
 #include <queue>
 #include <algorithm>
+#include <map>
+#include <cassert>
 
 using namespace Arts;
 using namespace std;
@@ -42,7 +47,7 @@ public:
 	};
 
 	queue<Data> incoming;
-	map<string,string> hints;
+    std::map<string,string> hints;
 };
 };
 

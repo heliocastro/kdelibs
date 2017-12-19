@@ -27,7 +27,7 @@
 #ifdef NDEBUG
 #define mywarning(a,b)
 #else
-#include <iostream.h>
+#include <iostream>
 #define mywarning(a,b) if (!(a)) arts_warning("MCOP connection warning: %s",b)
 #endif
 

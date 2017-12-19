@@ -175,11 +175,21 @@ kde2_library(ksycoca
         ltdl
     )
 
-kde2_module(kio_uiserver
+kde2_module(kio_uiserver_module
     SOURCES
         ${kio_uiserver_SOURCES}
     LIBS
         kde2::ksycoca
         kde2::kssl
         kde2::kdesu
+    OUTPUT_NAME
+        kio_uiserver
     )
+
+add_executable(kio_uiserver ${kio_uiserver_SOURCES})
+target_link_libraries(kio_uiserver
+        kde2::ksycoca
+        kde2::kssl
+        kde2::kdesu
+    )
+install(TARGETS kio_uiserver RUNTIME DESTINATION ${KDE2_BINDIR})

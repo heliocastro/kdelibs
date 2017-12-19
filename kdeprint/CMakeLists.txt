@@ -6,12 +6,18 @@ add_subdirectory(ext)
 add_subdirectory(filters)
 add_subdirectory(pics)
 add_subdirectory(tests)
+if(CUPS_FOUND)
+    #Did it ever worked ?
+    #add_subdirectory(cups)
+endif()
 
 kde2_kidl(kdeprintd.h)
 
 set(KDED_KDEPRINTD_SOURCES
     kdeprintd_skel.cpp kdeprintd.cpp kprintprocess.cpp
     )
+
+qt2_wrap_cpp(KDED_KDEPRINTD_SOURCES SOURCES kdeprintd.h kprintprocess.h)
 
 kde2_module(libkded_kdeprintd
     SOURCES
@@ -22,6 +28,7 @@ kde2_module(libkded_kdeprintd
         kde2::kio
     ALLOW_UNDEFINED
     )
+
 
 set(KDEPRINT_SOURCES
     kmfactory.cpp kmjob.cpp kmjobmanager.cpp kmmanager.cpp kmprinter.cpp
@@ -39,8 +46,8 @@ set(PRIVATE_HEADERS
     kmprinter.h kmuimanager.h kmvirtualmanager.h driver.h driveritem.h
     droptionview.h driverview.h matic.h kprintpreview.h kprinterimpl.h
     kprintdialog.h kpcopiespage.h kpdriverpage.h kprinterpropertydialog.h
-    kpgeneralpage.h kpqtpage.h kprintprocess.h kmthreadjob.h kpipeprocess.h
-    kdeprintd.h kprintfilter.h kmfiltermanager.h kpfilterpage.h kmspecialmanager.h
+    kpgeneralpage.h kpqtpage.h kmthreadjob.h kpipeprocess.h
+    kprintfilter.h kmfiltermanager.h kpfilterpage.h kmspecialmanager.h
     kdeprintcheck.h plugincombobox.h
     )
 

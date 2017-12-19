@@ -27,6 +27,7 @@
 #include "unixconnection.h"
 #include "tcpconnection.h"
 #include "referenceclean.h"
+#include "datapacket.h"
 #include "core.h"
 #include "md5auth.h"
 #include "mcoputils.h"
@@ -36,19 +37,23 @@
 #include "thread.h"
 
 #include <sys/stat.h>
-#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <signal.h>
 #include <errno.h>
 #include <iostream>
 
-#if TIME_WITH_SYS_TIME
+#ifdef TIME_WITH_SYS_TIME
 # include <sys/time.h>
 # include <time.h>
-#elif HAVE_SYS_TIME_H
+#else
+#ifdef HAVE_SYS_TIME_H
 # include <sys/time.h>
 #else
 # include <time.h>
-#endif                                                                          
+#endif
+#endif
 
 /* Dispatcher private data class (to ensure binary compatibility) */
 

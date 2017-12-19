@@ -22,8 +22,11 @@
 
 #include "dynamicskeleton.h"
 #include "dispatcher.h"
+#include "object.h"
 #include "debug.h"
-#include "stdio.h"
+#include "core.h"
+
+#include <cstdio>
 
 using namespace Arts;
 using namespace std;

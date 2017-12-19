@@ -32,6 +32,9 @@
 #include <config.h>
 #include <ctype.h>
 #include <map>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 	
 using namespace std;
 using namespace Arts;
