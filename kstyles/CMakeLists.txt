@@ -1,0 +1,11 @@
+add_subdirectory(utils)
+add_subdirectory(themes)
+add_subdirectory(highcolor)
+add_subdirectory(pics)
+add_subdirectory(basicplugin)
+add_subdirectory(klegacy)
+add_subdirectory(riscos)
+add_subdirectory(megagradient)
+add_subdirectory(stepplugin)
+add_subdirectory(web)
+
