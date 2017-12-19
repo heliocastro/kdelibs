@@ -20,6 +20,7 @@ set(kdecore_SRCS
     kmdcodec.cpp ksocks.cpp vsnprintf.c
     ksycoca.cpp ksycocadict.cpp ksycocafactory.cpp
     kxmessages.cpp kstartupinfo.cpp kdesktopwidget.cpp
+    kprocio.cpp
     )
 
 
@@ -49,6 +50,7 @@ qt2_wrap_cpp(kdecore_SRCS
         kuniqueapp.h
         kwinmodule.h
         kxmessages.h
+        kprocio.h
     )
 
 qt2_wrap_moc(kdecore_SRCS
