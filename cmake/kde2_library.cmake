@@ -18,6 +18,9 @@ function(kde2_library library_name)
         HEADERS
         INCLUDE_DIRECTORIES
         )
+    set(options
+        ALLOW_UNDEFINED
+        )
     cmake_parse_arguments(_lib "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
     if(NOT _lib_SOURCES)
@@ -64,6 +67,10 @@ function(kde2_library library_name)
             )
     endif()
 
+    if(NOT ${_lib_ALLOW_UNDEFINED})
+        set(link_flags "-Wl,--no-undefined")
+    endif()
+
     set(library_version ${PROJECT_VERSION})
     set(library_soversion ${PROJECT_VERSION_MAJOR})
     if(_lib_VERSION)
@@ -75,7 +82,7 @@ function(kde2_library library_name)
     set_target_properties(${library_name} PROPERTIES
         VERSION ${library_version}
         SOVERSION ${library_soversion}
-        LINK_FLAGS "-Wl,--as-needed -Wl,--no-undefined"
+        LINK_FLAGS "-Wl,--as-needed ${link_flags}"
         OUTPUT_NAME ${output_name}
         EXPORT_NAME ${output_name}
         )
