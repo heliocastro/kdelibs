@@ -27,4 +27,9 @@ LIBS
     kde2::kdecore kde2::kio
     )
 
-install(FILES kjava.jar kjava.policy DESTINATION ${KDE2_DATADIR}/kjava)
+configure_file(kjava.policy.in ${CMAKE_CURRENT_BINARY_DIR}/kjava.policy @ONLY)
+
+install(FILES
+    kjava.jar
+    ${CMAKE_CURRENT_BINARY_DIR}/kjava.policy
+    DESTINATION ${KDE2_DATADIR}/kjava)
