@@ -22,6 +22,10 @@ set(libdcop_SRCS
     dcopref.cpp
     )
 
+set(libdcop_HEADERS
+    dcopclient.h dcopobject.h dcopref.h dcopstub.h
+    )
+
 qt2_wrap_cpp(libdcop_SRCS
     SOURCES
         dcopclient.h
@@ -37,6 +41,7 @@ kde2_library(libDCOP
         1.0.0
     )
 
+install(FILES ${libdcop_HEADERS} DESTINATION ${KDE2_INCLUDEDIR})
 
 set(dcopserver_SRCS
     dcopserver.cpp

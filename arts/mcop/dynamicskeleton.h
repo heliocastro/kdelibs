@@ -130,7 +130,7 @@ public:
 	 * </pre>
 	 */
 	const MethodDef& getMethodDef(long methodID) {
-		return _dsGetMethodDef(methodID);
+		return Object_skel::_dsGetMethodDef(methodID);
 	}
 
 /*-- reimplemented from Arts::Object_skel: --*/

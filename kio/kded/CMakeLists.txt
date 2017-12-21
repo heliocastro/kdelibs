@@ -16,9 +16,15 @@ set(kbuildsycoca_module_SOURCES
     kctimefactory.cpp
     )
 
+set(global_HEADERS
+    kdedmodule.h
+    )
+
+install(FILES ${global_HEADERS} DESTINATION ${KDE2_INCLUDEDIR})
+
 qt2_wrap_cpp(kded_module_SOURCES
     SOURCES
-        kded.h
+        ${global_HEADERS}
         kdedmodule.h
     )
 
@@ -68,3 +74,4 @@ target_link_libraries(kdontchangethehostname
 
 install(TARGETS kbuildsycoca kded kdontchangethehostname
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES kdedmodule.desktop DESTINATION ${KDE2_SERVICETYPESDIR})

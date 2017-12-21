@@ -5,4 +5,4 @@ install(FILES kdeprint_collate.png kdeprint_collate_reverse.png kdeprint_color.p
     DESTINATION ${KDE2_DATADIR}/kdeprint/pics
     )
 
-kde2_stdicon(OUTPUT_DIR "kdeprint/icons")
+kde2_stdicon(OUTPUT_DIR "${KDE2_DATADIR}/kdeprint/icons")

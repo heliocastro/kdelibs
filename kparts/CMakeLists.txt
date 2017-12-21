@@ -17,6 +17,8 @@ kde2_library(kparts
     LIBS
         kde2::kfile
         kde2::kio
+    VERSION
+        1.0.0
     )
 
 install(
@@ -24,3 +26,5 @@ install(
         kpart.desktop krop.desktop krwp.desktop browserview.desktop
         DESTINATION ${KDE2_SERVICETYPESDIR}
     )
+
+install(FILES ${KPARTS_HEADERS} DESTINATION ${KDE2_INCLUDEDIR}/kparts)

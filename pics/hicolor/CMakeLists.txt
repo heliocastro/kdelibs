@@ -1,6 +1,6 @@
 add_subdirectory(kde)
 
-kde2_stdicon("")
+kde2_stdicon()
 
 install(FILES
     index.desktop

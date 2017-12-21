@@ -1,6 +1,7 @@
 add_subdirectory(klauncher)
 add_subdirectory(kded)
 add_subdirectory(file)
+add_subdirectory(ftp)
 add_subdirectory(http)
 add_subdirectory(pics)
 add_subdirectory(tests)
@@ -11,6 +12,7 @@ add_subdirectory(bzip2)
 add_subdirectory(kssld)
 
 set(ksycoca_SOURCES
+    chmodjob.cpp
     kdirwatch.cpp
     ktrader.cpp
     ktraderparse.cpp
@@ -35,7 +37,6 @@ set(ksycoca_SOURCES
     kimageio.cpp
     lex.c
     yacc.c
-    chmodjob.cpp
     kscan.cpp
     ktar.cpp
     previewjob.cpp
@@ -89,65 +90,55 @@ set(kio_uiserver_HEADERS
     skipdlg.h
     )
 
-set(ksycoca_HEADERS
-    kdirwatch.h
-    ktrader.h ktraderparse.h ktraderparsetree.h
-    kservicetypefactory.h kservicetype.h
-    kmimetype.h kservicegroup.h
-    kservice.h kservicefactory.h
-    kuserprofile.h kservicegroupfactory.h
-    kurifilter.h
-    kfilterbase.h kfilterdev.h
-    kshellcompletion.h kurlcompletion.h
-    kautomount.h krun.h
-    kfileitem.h kdirlister.h kimageio.h
-    chmodjob.h kscan.h ktar.h previewjob.h
+set(global_HEADERS
+    kservicetype.h kmimetype.h kmimemagic.h kservice.h
+    krun.h kdirwatch.h kautomount.h kuserprofile.h
+    kshred.h ktar.h ktrader.h kurifilter.h kurlcompletion.h
+    kshellcompletion.h kfileitem.h kdirlister.h kservicegroup.h
+    progressbase.h defaultprogress.h statusbarprogress.h
+    kimageio.h kdirnotify.h ${CMAKE_CURRENT_BINARY_DIR}/kdirnotify_stub.h
+    kurlpixmapprovider.h kprotocolinfo.h kprotocolmanager.h
+    kfilterbase.h kfilterdev.h kemailsettings.h kscan.h
     )
 
 set(kio_HEADERS
-    kshred.h
-    kprotocolmanager.h
-    slave.h slaveinterface.h
-    sessiondata.h
-    scheduler.h
     connection.h
-    global.h
-    slaveconfig.h
-    netaccess.h paste.h
-    kmimemagic.h
-    tcpslavebase.h slavebase.h passdlg.h
+    slaveinterface.h slave.h slaveconfig.h
+    sessiondata.h global.h passdlg.h
+    netaccess.h scheduler.h
+    jobclasses.h paste.h slavebase.h
     progressbase.h defaultprogress.h
-    statusbarprogress.h
-    kemailsettings.h authinfo.h
-    kprotocolinfo.h kprotocolinfofactory.h
-    jobclasses.h observer.h
+    statusbarprogress.h uiserver.h 
+    ${CMAKE_CURRENT_BINARY_DIR}/uiserver_stub.h tcpslavebase.h
+    renamedlg.h skipdlg.h
+    observer.h chmodjob.h
+    kpac.h kmdbase.h authinfo.h
+    ioslave_defaults.h http_slave_defaults.h previewjob.h
 )
 
-set(ksycoca_noinst_HEADERS
+install(FILES ${kio_HEADERS} job.h DESTINATION ${KDE2_INCLUDEDIR}/kio)
+install(FILES ${global_HEADERS} DESTINATION ${KDE2_INCLUDEDIR})
+
+set(global_NOINST_HEADERS
     kservicetypefactory.h
     kservicefactory.h
     kmessageboxwrapper.h
     ktraderparse.h
     ktraderparsetree.h
-    )
-
-set(kio_noinst_HEADERS
     kimageiofactory.h
     kprotocolinfofactory.h
     )
 
-
-qt2_wrap_cpp(ksycoca_SOURCES
+qt2_wrap_cpp(moc_SOURCES
     SOURCES
-        ${ksycoca_HEADERS}
-        ${ksycoca_noinst_HEADERS}
+        ${global_HEADERS}
+        ${global_NOINST_HEADERS}
     )
 
 
 qt2_wrap_cpp(kio_SOURCES
     SOURCES
         ${kio_HEADERS}
-        ${kio_noinst_HEADERS}
     )
 
 qt2_wrap_cpp(kio_uiserver_SOURCES
@@ -157,6 +148,7 @@ qt2_wrap_cpp(kio_uiserver_SOURCES
 
 kde2_library(kio
     SOURCES
+        ${moc_SOURCES}
         ${kio_SOURCES}
     LIBS
         kde2::kdeui
@@ -165,14 +157,19 @@ kde2_library(kio
         ZLIB::ZLIB
     INCLUDE_DIRECTORIES
         ${CMAKE_CURRENT_SOURCE_DIR}/kded
+    VERSION
+        3.0.0
     )
 
 kde2_library(ksycoca
     SOURCES
+        ${moc_SOURCES}
         ${ksycoca_SOURCES}
     LIBS
         kde2::kio
         ltdl
+    VERSION
+        3.0.0
     )
 
 kde2_module(kio_uiserver_module
@@ -193,3 +190,20 @@ target_link_libraries(kio_uiserver
         kde2::kdesu
     )
 install(TARGETS kio_uiserver RUNTIME DESTINATION ${KDE2_BINDIR})
+
+install(FILES magic DESTINATION ${KDE2_MIMEDIR})
+
+install(FILES
+    application.desktop kurifilterplugin.desktop kcomprfilter.desktop kscan.desktop
+    DESTINATION ${KDE2_SERVICETYPESDIR}
+    )
+
+install(FILES
+    kio_uiserver.desktop kmailservice.protocol telnet.protocol rlogin.protocol
+    DESTINATION ${KDE2_SERVICESDIR}
+    )
+
+install(FILES
+    kioslave.upd useragent.pl proxytype.pl
+    DESTINATION ${KDE2_DATADIR}/kconf_update
+    )

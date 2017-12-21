@@ -23,7 +23,9 @@ kde2_library(libkspell
         ${libkspell_SRCS}
     COMPILE_DEFINITIONS
         -DQT_NO_COMPAT
-LIBS
-    kde2::kdeui
+    LIBS
+        kde2::kdeui
+    VERSION
+        3.0.0
     )
 

@@ -1,1 +1,1 @@
-kde2_stdicon("")
+kde2_stdicon()

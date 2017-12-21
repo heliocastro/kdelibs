@@ -47,12 +47,17 @@ macro(KDE2_STDICON)
             string(REPLACE "mime" "mimetypes" icon_path ${pre_path})
         elseif(${action} STREQUAL "device")
             string(REPLACE "device" "devices" icon_path ${pre_path})
+        elseif(${action} STREQUAL "app")
+            string(REPLACE "app" "apps" icon_path ${pre_path})
         endif()
-        set(outdir "${KDE2_ICONDIR}/${_ico_OUTPUT_DIR}")
-            install(
-                FILES ${real_icon}
-                DESTINATION "${outdir}/hicolor/${size}x${size}/${icon_path}"
-                RENAME ${icon_name}
-                )
+        set(outdir "${KDE2_ICONDIR}")
+        if(_ico_OUTPUT_DIR)
+            set(outdir "${_ico_OUTPUT_DIR}")
+        endif()
+        install(
+            FILES ${real_icon}
+            DESTINATION "${outdir}/hicolor/${size}x${size}/${icon_path}"
+            RENAME ${icon_name}
+            )
     endforeach()
 endmacro()

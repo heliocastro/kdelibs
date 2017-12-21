@@ -1,3 +1,5 @@
+add_subdirectory(kssl)
+
 set(kssl_SOURCES
     ksslcertchain.cc
     ksslcertificatefactory.cc
@@ -41,10 +43,11 @@ qt2_wrap_cpp(kssl_SOURCES
         ${kssl_HEADERS}
     )
 
-
 kde2_library(kssl
     SOURCES
         ${kssl_SOURCES}
     LIBS
         kde2::kdeui
     )
+
+install(FILES ${kssl_HEADERS} DESTINATION ${KDE2_INCLUDEDIR})

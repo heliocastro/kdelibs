@@ -22,4 +22,4 @@ kde2_library(libkab
         3.0.0
     )
 
-install(FILES template.kab template.config DESTINATION ${KDE2_TEMPLATESDIR}/kab)
+install(FILES template.kab template.config DESTINATION ${KDE2_DATADIR}/kab)

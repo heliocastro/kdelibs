@@ -18,6 +18,8 @@ kde2_library(libkscreensaver
         ${libkscreensaver_SRCS}
     LIBS
         kde2::ksycoca
+    VERSION
+        3.0.0
     ALLOW_UNDEFINED
     )
 

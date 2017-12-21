@@ -18,16 +18,16 @@ target_link_libraries(kcookiejar
     )
 
 install(TARGETS kcookiejar
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    RUNTIME DESTINATION ${KDE2_BINDIR}
     )
 
 install(FILES
     kcookiejar.desktop
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/services
+    DESTINATION ${KDE2_SERVICESDIR}
     )
 
 install(FILES
     kcookiescfg.upd
-    DESTINATION ${CMAKE_INSTALL_DATADIR}
+    DESTINATION ${KDE2_DATADIR}/kconf_update
     )
 

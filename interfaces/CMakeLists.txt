@@ -18,6 +18,8 @@ kde2_library(libktexteditor
         ${libktexteditor_SRCS}
     LIBS
         kde2::kparts
+    VERSION
+        0.0.0
     )
 
 install(FILES

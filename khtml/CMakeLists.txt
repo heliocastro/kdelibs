@@ -39,7 +39,6 @@ set(libkhtml_SRCS
 
 set(libkhtml_HEADERS
     khtmlview.h khtml_part.h khtml_events.h khtml_settings.h khtmldefaults.h
-    khtml_run.h khtml_factory.h
     )
 
 set(libkhtml_NOINST_HEADERS
@@ -71,6 +70,8 @@ kde2_library(libkhtml
         kde2::kssl
         kde2::kdeprint
         kde2::kjava
+    VERSION
+        3.0.0
     )
 
 set(libkhtmlimage_SRCS
@@ -100,3 +101,4 @@ install(FILES
     DESTINATION ${KDE2_SERVICESDIR}
     )
 
+install(FILES khtml.rc khtml_browser.rc khtml_popupmenu.rc DESTINATION ${KDE2_DATADIR}/khtml)

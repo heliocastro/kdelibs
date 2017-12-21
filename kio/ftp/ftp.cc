@@ -41,7 +41,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#if TIME_WITH_SYS_TIME
+#ifdef TIME_WITH_SYS_TIME
 #include <time.h>
 #endif
 

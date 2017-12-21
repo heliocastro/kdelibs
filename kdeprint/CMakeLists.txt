@@ -53,6 +53,9 @@ set(PRIVATE_HEADERS
 
 set(PUBLIC_HEADERS kprintdialogpage.h kpreloadobject.h)
 
+install(FILES ${PUBLIC_HEADERS} DESTINATION ${KDE2_INCLUDEDIR}/kdeprint)
+install(FILES kprinter.h DESTINATION ${KDE2_INCLUDEDIR})
+
 qt2_wrap_cpp(KDEPRINT_SOURCES
     SOURCES
         ${PUBLIC_HEADERS}
@@ -66,3 +69,8 @@ kde2_library(kdeprint
         kde2::kparts
         ZLIB::ZLIB
     )
+
+install(FILES testprint.ps specials.desktop DESTINATION ${KDE2_DATADIR}/kdeprint)
+install(FILES kdeprintd.desktop DESTINATION ${KDE2_SERVICESDIR}/kded)
+install(FILES kdeprintrc DESTINATION ${KDE2_CONFDIR})
+install(FILES kprintpreviewui.rc DESTINATION ${KDE2_CONFDIR}/ui)

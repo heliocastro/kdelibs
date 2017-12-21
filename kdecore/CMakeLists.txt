@@ -23,34 +23,37 @@ set(kdecore_SRCS
     kprocio.cpp
     )
 
+set(libkdecore_HEADERS
+    kconfig.h kconfigdata.h ksimpleconfig.h kconfigbase.h kdesktopfile.h
+    kurl.h ksock.h kaboutdata.h kcmdlineargs.h kconfigbackend.h
+    kapp.h kuniqueapp.h kcharsets.h kprocess.h kprocctrl.h
+    klocale.h kicontheme.h kiconloader.h kdebug.h kstdaccel.h
+    kwinmodule.h kwin.h krootprop.h kpixmap.h kaccel.h
+    kglobalaccel.h kapplication.h kstandarddirs.h kregexp.h kstyle.h
+    kcompletion.h kstringhandler.h kstringhandler.h kstddirs.h kglobal.h
+    kglobalsettings.h ksharedptr.h kde_dmalloc.h kallocator.h kcrash.h
+    krfcdate.h kuniqueapplication.h kinstance.h kpalette.h kipc.h
+    klibloader.h ktempfile.h ksavefile.h krandomsequence.h kstringhandler.h
+    knotifyclient.h kiconeffect.h kaudioplayer.h kdestyle.h kdcoppropertyproxy.h
+    kdatastream.h netwm.h netwm_def.h netwm_p.h kpixmapprovider.h
+    kunload.h kstaticdeleter.h kextsock.h ksockaddr.h kprocio.h
+    kasyncio.h kbufferedio.h kurldrag.h kmimesourcefactory.h kpixmapsplitter.h
+    ksocks.h ksycoca.h ksycocaentry.h ksycocatype.h kmdcodec.h
+    kxmessages.h kstartupinfo.h kdesktopwidget.h
+    )
+
+set(libkdecore_NOINST_HEADERS
+    kckey.h kregpriv.h kcompletion_private.h netsupp.h ksycocafactory.h
+    ksycocadict.h kextsocklookup.h
+    )
+
+install(FILES ${libkdecore_HEADERS} DESTINATION ${KDE2_INCLUDEDIR})
+install(FILES kmdcodec.h DESTINATION ${KDE2_INCLUDEDIR}/kio)
 
 qt2_wrap_cpp(kdecore_SRCS
     SOURCES
-        kaccel.h
-        kapp.h
-        kaudioplayer.h
-        kbufferedio.h
-        kcompletion.h
-        kconfigbase.h
-        kconfig.h
-        kdesktopfile.h
-        kdestyle.h
-        kextsock.h
-        kextsocklookup.h
-        kglobalaccel.h
-        klibloader.h
-        kprocctrl.h
-        kprocess.h
-        ksimpleconfig.h
-        ksockaddr.h
-        ksock.h
-        kstartupinfo.h
-        kstyle.h
-        ksycoca.h
-        kuniqueapp.h
-        kwinmodule.h
-        kxmessages.h
-        kprocio.h
+        ${libkdecore_HEADERS}
+        ${libkdecore_NOINST_HEADERS}
     )
 
 qt2_wrap_moc(kdecore_SRCS
@@ -71,7 +74,15 @@ kde2_library(kdecore
         Qt::Qt2
         kde2::DCOP
         ${X11_LIBRARIES}
+    VERSION
+        3.0.0
     )
+
+install(FILES charsets.config DESTINATION ${KDE2_CONFDIR} RENAME charsets)
+install(FILES eventsrc DESTINATION ${KDE2_CONFDIR}/knotify)
+install(FILES 40.colors DESTINATION ${KDE2_CONFDIR}/colors RENAME "40 Colors")
+install(FILES Web.colors DESTINATION ${KDE2_CONFDIR}/colors RENAME "Web")
+install(FILES Royal.colors DESTINATION ${KDE2_CONFDIR}/colors RENAME "Royal")
 
 configure_file(kde-config.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/kde-config.cpp @ONLY)
 

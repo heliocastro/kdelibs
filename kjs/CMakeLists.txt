@@ -33,28 +33,26 @@ set(libkjs_SOURCES
     ${BISON_MyParser_OUTPUTS}
     )
 
-set(libkjs_HEADERS
-    array_object.h
-    bool_object.h
-    collector.h
-    date_object.h
-    debugger.h
-    error_object.h
-    function_object.h
-    internal.h
-    lexer.h
-    lexer.lut.h
-    math_object.h
-    math_object.lut.h
+set(libkjs_noinst_HEADERS
     nodes.h
-    number_object.h
-    object_object.h
+    lexer.h
     regexp.h
-    regexp_object.h
+    internal.h
+    collector.h
+    object_object.h
+    function_object.h
+    bool_object.h
+    math_object.lut.h
+    array_object.h
     string_object.h
+    number_object.h
+    date_object.h
+    regexp_object.h
+    error_object.h
+    debugger.h
     )
 
-set(libkjs_noinst_HEADERS
+set(libkjs_HEADERS
     kjs.h
     object.h
     operations.h
@@ -64,11 +62,15 @@ set(libkjs_noinst_HEADERS
     types.h
     )
 
+install(FILES ${libkjs_HEADERS} DESTINATION ${KDE2_INCLUDEDIR}/kjs)
+
 kde2_library(libkjs
     SOURCES
         ${libkjs_SOURCES}
     LIBS
         ${PCRE_LIBRARIES}
+    VERSION
+        1.0.0
     )
 
 add_executable(testkjs testkjs.cpp)

@@ -15,6 +15,7 @@ kde2_module(kio_file
 
 install(FILES
     file.protocol
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/services
+    DESTINATION ${KDE2_SERVICESDIR}
     )
 
+install(FILES file.h DESTINATION ${KDE2_INCLUDEDIR}/kio)
