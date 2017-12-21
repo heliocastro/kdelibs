@@ -1,208 +1,73 @@
-set(kdeui_SOURCES
-    kedittoolbar.cpp
-    kseparator.cpp
-    kprogress.cpp
-    kcharselect.cpp
-    kaboutkde.cpp
-    kpushbutton.cpp
-    kfontcombo.cpp
-    kdrawutil.cpp
-    kthemebase.cpp
-    krestrictedline.cpp
-    keditcl2.cpp
-    kled.cpp
-    kdatewidget.cpp
-    ktoolbar.cpp
-    knumvalidator.cpp
-    qxembed.cpp
-    kcursor.cpp
-    kjanuswidget.cpp
-    kcommand.cpp
-    karrowbutton.cpp
-    ktextbrowser.cpp
-    kpassdlg.cpp
-    kdcopactionproxy.cpp
-    klistview.cpp
-    ksystemtray.cpp
-    kiconview.cpp
-    kthemestyle.cpp
-    kdbtn.cpp
-    keditlistbox.cpp
-    ktoolbarbutton.cpp
-    kxmlgui.cpp
-    ksqueezedtextlabel.cpp
-    kcontainer.cpp
-    kpanelextension.cpp
-    kdockwidget.cpp
-    kauthicon.cpp
-    klineeditdlg.cpp
-    kpanelmenu.cpp
-    klistbox.cpp
-    kcolorbtn.cpp
-    kdatepik.cpp
-    kdialog.cpp
-    kmessagebox.cpp
-    kaboutapplication.cpp
-    kcolordlg.cpp
-    kpixmapio.cpp
-    ktoolbarradiogroup.cpp
-    khelpmenu.cpp
-    kcolordrag.cpp
-    kcmenumngr.cpp
-    kaccelmenu.cpp
-    kalphapainter.cpp
-    ktmainwindow.cpp
-    knuminput.cpp
-    kanimwidget.cpp
-    kbugreport.cpp
-    krootpixmap.cpp
-    kimageeffect.cpp
-    ksharedpixmap.cpp
-    ktabctl.cpp
-    kcompletionbox.cpp
-    kdockwidget_private.cpp
-    kpopupmenu.cpp
-    kdatetbl.cpp
-    kdualcolorbtn.cpp
-    kkeydialog.cpp
-    kselect.cpp
-    kstatusbar.cpp
-    kcombobox.cpp
-    kaboutdialog.cpp
-    kmainwindow.cpp
-    kruler.cpp
-    keditcl1.cpp
-    kwizard.cpp
-    kwindowlistmenu.cpp
-    kcolorcombo.cpp
-    kfontdialog.cpp
-    kxmlguibuilder.cpp
-    kurllabel.cpp
-    klineedit.cpp
-    kstdaction.cpp
-    ktip.cpp
-    kaction.cpp
-    kxmlguiclient.cpp
-    kbuttonbox.cpp
-    kmenubar.cpp
-    kdocktabctl.cpp
-    kpixmapeffect.cpp
-    kpanelapplet.cpp
-    kdialogbase.cpp
-)
+add_subdirectory(tests)
 
-set(kdeui_HEADERS
-    kaction.h
-    kstdaction.h
-    kdbtn.h
-    kcursor.h
-    kwindowlistmenu.h
-    kimageeffect.h
-    kcharselect.h
-    kcontainer.h
-    kauthicon.h
-    kpanelapplet.h
-    kdocktabctl.h
-    kpixmapeffect.h
-    kdualcolorbtn.h
-    kpopupmenu.h
-    kdrawutil.h
-    kaboutapplication.h
-    ktoolbar.h
-    kdatewidget.h
-    kxmlgui.h
-    kmenubar.h
-    knuminput.h
-    karrowbutton.h
-    ktip.h
-    knumvalidator.h
-    klistview.h
-    kpushbutton.h
-    kcolordlg.h
-    kaboutdialog.h
-    kdockwindow.h
-    kdialogbase.h
-    kpassdlg.h
-    kcolordrag.h
-    kled.h
-    kxmlguiclient.h
-    kdatepik.h
-    krestrictedline.h
-    kcmenumngr.h
-    ktmainwindow.h
-    ksharedpixmap.h
-    kiconview.h
-    kfontdialog.h
-    kcommand.h
-    kpanelextension.h
-    kprogress.h
-    klineeditdlg.h
-    kbugreport.h
-    kkeydialog.h
-    kstatusbar.h
-    kthemestyle.h
-    kalphapainter.h
-    kcombobox.h
-    kselect.h
-    ktextbrowser.h
-    keditlistbox.h
-    kwizard.h
-    kcompletionbox.h
-    kanimwidget.h
-    kaboutkde.h
-    kcolorcombo.h
-    kbuttonbox.h
-    kpixmapio.h
-    kurllabel.h
-    kxmlguibuilder.h
-    kdockwidget.h
-    kseparator.h
-    kmainwindow.h
-    ksqueezedtextlabel.h
-    kwidgetid.h
-    kaccelmenu.h
-    kcolordialog.h
-    krootpixmap.h
-    kjanuswidget.h
-    kthemebase.h
-    ktoolbarbutton.h
-    kcmodule.h
-    kpanelmenu.h
-    ktabctl.h
-    kcolorbtn.h
-    ktoolbarradiogroup.h
-    ksystemtray.h
-    klineedit.h
-    kdialog.h
-    kruler.h
-    kfontcombo.h
-    kdatetbl.h
-    qxembed.h
-    kaccelgen.h
-    kmessagebox.h
-    keditcl.h
-    klistbox.h
-    kdcopactionproxy.h
-    khelpmenu.h
-    kcolorbutton.h
-    kedittoolbar.h
+set(libkdeui_SRCS
+    qxembed.cpp ksharedpixmap.cpp kthemestyle.cpp kurllabel.cpp knuminput.cpp
+    ktoolbar.cpp klineedit.cpp klistview.cpp kprogress.cpp kimageeffect.cpp
+    kcolordlg.cpp kselect.cpp kdatepik.cpp kdatetbl.cpp kfontdialog.cpp
+    kpopupmenu.cpp ktabctl.cpp kstatusbar.cpp kmainwindow.cpp ktmainwindow.cpp
+    kmenubar.cpp kpixmapio.cpp keditlistbox.cpp kseparator.cpp krestrictedline.cpp
+    kcolorbtn.cpp ksystemtray.cpp kbuttonbox.cpp keditcl1.cpp keditcl2.cpp
+    kled.cpp kdbtn.cpp kwizard.cpp kcontainer.cpp kkeydialog.cpp
+    kruler.cpp kcursor.cpp kaccelmenu.cpp klineeditdlg.cpp kthemebase.cpp
+    kcharselect.cpp kcolordrag.cpp knumvalidator.cpp kdialog.cpp kdialogbase.cpp
+    kjanuswidget.cpp kaboutdialog.cpp kpixmapeffect.cpp kauthicon.cpp kmessagebox.cpp
+    kdualcolorbtn.cpp ktoolbarradiogroup.cpp ktoolbarbutton.cpp ktextbrowser.cpp kaction.cpp
+    khelpmenu.cpp kcmenumngr.cpp kpanelmenu.cpp kstdaction.cpp kdrawutil.cpp
+    kiconview.cpp klistbox.cpp kbugreport.cpp kcombobox.cpp kpassdlg.cpp
+    kxmlguiclient.cpp kxmlgui.cpp kxmlguibuilder.cpp kedittoolbar.cpp kdocktabctl.cpp
+    kdockwidget.cpp kdockwidget_private.cpp kanimwidget.cpp krootpixmap.cpp kaboutkde.cpp
+    kaboutapplication.cpp kpanelapplet.cpp kdcopactionproxy.cpp kcolorcombo.cpp kpushbutton.cpp
+    kpanelextension.cpp kcompletionbox.cpp kalphapainter.cpp ksqueezedtextlabel.cpp kcommand.cpp
+    kwindowlistmenu.cpp kfontcombo.cpp ktip.cpp kdatewidget.cpp karrowbutton.cpp
     )
 
-qt2_wrap_cpp(kdeui_SOURCES
-    SOURCES
-        ${kdeui_HEADERS}
-        kcursor_private.h
-        klistviewlineedit.h
-        kdockwidget_private.h
-        kkeybutton.h
-        kaboutdialog_private.h
-        kdialogbase_priv.h
+set(libkdeui_HEADERS
+    kprogress.h kcolordlg.h kcolordialog.h kselect.h kdatepik.h
+    kdatetbl.h kfontdialog.h kpopupmenu.h ktabctl.h kstatusbar.h
+    kimageeffect.h kmainwindow.h ktmainwindow.h ktoolbar.h kmenubar.h
+    knuminput.h kseparator.h klineedit.h krestrictedline.h kcolorbutton.h
+    kcolorbtn.h ksystemtray.h kdockwindow.h kbuttonbox.h kcontainer.h
+    keditcl.h kled.h keditlistbox.h kdbtn.h kwizard.h
+    kkeydialog.h kurllabel.h kruler.h kcursor.h kaccelmenu.h
+    klineeditdlg.h kwidgetid.h kthemebase.h kthemestyle.h kcharselect.h
+    kcolordrag.h qxembed.h knumvalidator.h kdialog.h kdialogbase.h
+    kjanuswidget.h kaboutdialog.h kpixmapeffect.h kauthicon.h kmessagebox.h
+    ksharedpixmap.h kdualcolorbtn.h ktoolbarbutton.h ktoolbarradiogroup.h ktextbrowser.h
+    kaction.h khelpmenu.h kcmodule.h kcmenumngr.h kpanelmenu.h
+    kstdaction.h kdrawutil.h kcombobox.h kiconview.h klistview.h
+    klistbox.h kbugreport.h kpassdlg.h kxmlguiclient.h kxmlgui.h
+    kxmlguibuilder.h kpixmapio.h kedittoolbar.h kdocktabctl.h kdockwidget.h
+    kanimwidget.h krootpixmap.h kaboutkde.h kaboutapplication.h kpanelapplet.h
+    kpushbutton.h kdcopactionproxy.h kcolorcombo.h kpanelextension.h kcompletionbox.h
+    kalphapainter.h ksqueezedtextlabel.h kcommand.h kwindowlistmenu.h kfontcombo.h
+    kaccelgen.h ktip.h kdatewidget.h karrowbutton.h
     )
 
-kde2_library(kdeui
+set(libkdeui_NOINST_HEADERS
+    kdockwidget_private.h klistviewlineedit.h kkeybutton.h kdialogbase_priv.h kaboutdialog_private.h
+    kcursor_private.h kdepackages.h kdeui-doc.h
+    )
+
+qt2_wrap_cpp(libkdeui_SRCS
     SOURCES
-        ${kdeui_SOURCES}
+        ${libkdeui_HEADERS}
+        ${libkdeui_NOINST_HEADERS}
+    )
+
+install(FILES ${libkdeui_HEADERS} DESTINATION ${KDE2_INCLUDEDIR})
+
+kde2_library(libkdeui
+    SOURCES
+        ${libkdeui_SRCS}
     LIBS
-        Qt::Qt2
         kde2::kdecore
+    VERSION
+        3.0.0
+   )
+
+install(FILES
+    aboutkde.png keys.png ktip-bulb.png ktip-background.png
+    DESTINATION ${KDE2_DATADIR}/kdeui/pics
     )
+
+install(FILES ui_standards.rc DESTINATION ${KDE2_CONFDIR}/ui)
