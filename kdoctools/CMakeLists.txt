@@ -53,5 +53,12 @@ configure_file(checkXML.in ${CMAKE_CURRENT_BINARY_DIR}/checkXML @ONLY)
 
 install(TARGETS meinproc xml2man RUNTIME DESTINATION ${KDE2_BINDIR})
 
-install(FILES kdb2html ${CMAKE_CURRENT_BINARY_DIR}/checkXML
-    DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(
+    PROGRAMS
+        kdb2html
+        ${CMAKE_CURRENT_BINARY_DIR}/checkXML
+        xmlizer
+    DESTINATION
+        ${KDE2_BINDIR}
+    )
+install(FILES help.protocol DESTINATION ${KDE2_SERVICESDIR})
