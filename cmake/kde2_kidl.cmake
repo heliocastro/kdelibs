@@ -16,7 +16,7 @@ macro(KDE2_KIDL)
             DEPENDS ${FILENAME}.kidl
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             )
-        add_custom_command(OUTPUT ${FILENAME}_stub.cpp
+        add_custom_command(OUTPUT ${FILENAME}_stub.cpp ${FILENAME}_stub.h
             COMMAND dcopidl2cpp --c++-suffix cpp --no-skel ${FILENAME}.kidl
             VERBATIM
             DEPENDS ${FILENAME}.kidl
