@@ -40,6 +40,7 @@ set(libkfile_HEADERS
     kfilefilter.h krecentdocument.h kfileview.h kfiledialog.h kurlrequester.h
     kfilepreview.h kfile.h kurlcombobox.h kurlrequesterdlg.h kopenwith.h
     kpropsdlg.h kicondialog.h kdirsize.h kpreviewwidgetbase.h kimagefilepreview.h
+    kdiskfreesp.h
     )
 
 set(libkfile_NOINST_HEADERS
