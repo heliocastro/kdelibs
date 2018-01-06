@@ -122,8 +122,8 @@ set(global_HEADERS
     kshred.h ktar.h ktrader.h kurifilter.h kurlcompletion.h
     kshellcompletion.h kfileitem.h kdirlister.h kservicegroup.h
     progressbase.h defaultprogress.h statusbarprogress.h
-    kimageio.h kdirnotify.h ${CMAKE_CURRENT_BINARY_DIR}/kdirnotify_stub.h
-    kurlpixmapprovider.h kprotocolinfo.h kprotocolmanager.h
+    kimageio.h kdirnotify.h kurlpixmapprovider.h
+    kprotocolinfo.h kprotocolmanager.h
     kfilterbase.h kfilterdev.h kemailsettings.h kscan.h
     )
 
@@ -134,7 +134,7 @@ set(kio_HEADERS
     netaccess.h scheduler.h
     jobclasses.h paste.h slavebase.h
     progressbase.h defaultprogress.h
-    statusbarprogress.h uiserver.h 
+    statusbarprogress.h uiserver.h
     ${CMAKE_CURRENT_BINARY_DIR}/uiserver_stub.h tcpslavebase.h
     renamedlg.h skipdlg.h
     observer.h chmodjob.h
@@ -160,7 +160,6 @@ qt2_wrap_cpp(moc_SOURCES
         ${global_HEADERS}
         ${global_NOINST_HEADERS}
     )
-
 
 qt2_wrap_cpp(kio_SOURCES
     SOURCES

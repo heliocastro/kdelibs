@@ -52,6 +52,7 @@ qt2_wrap_cpp(kded_module_SOURCES
     SOURCES
         ${global_HEADERS}
         kdedmodule.h
+        kded.h
     )
 
 qt2_wrap_cpp(kbuildsycoca_module_SOURCES
