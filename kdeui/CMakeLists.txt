@@ -89,7 +89,9 @@ kde2_library(libkdeui
         kde2::kdecore
     VERSION
         3.0.0
-   )
+)
+
+target_compile_options(libkdeui PUBLIC -Wno-narrowing)
 
 install(FILES
     aboutkde.png keys.png ktip-bulb.png ktip-background.png
