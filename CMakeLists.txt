@@ -31,6 +31,7 @@ project(kdelibs
     LANGUAGES C CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 
 include(GNUInstallDirs)
 include(kde2)
@@ -109,6 +110,11 @@ find_package(LibXml2 REQUIRED)
 find_package(LibXslt REQUIRED)
 
 find_package(BZip2 REQUIRED)
+if(NOT TARGET BZip2::BZip2)
+	add_library(BZip2::BZip2 UNKNOWN IMPORTED)
+	set_target_properties(BZip2::BZip2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${BZIP2_INCLUDE_DIRS}")
+        set_property(TARGET BZip2::BZip2 APPEND PROPERTY IMPORTED_LOCATION "${BZIP2_LIBRARY}")
+endif()
 
 find_package(Cups)
 
