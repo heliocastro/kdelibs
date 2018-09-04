@@ -41,7 +41,7 @@ kde2_module(kio_help
     LIBS
         kde2::ksycoca
         BZip2::BZip2
-        ${LIBXML2_LIBRARY}
+        ${LIBXML2_LIBRARIES}
         ${LIBXSLT_LIBRARIES}
     COMPILE_DEFINITIONS
         -DSRCDIR="${CMAKE_CURRENT_SOURCE_DIR}"
@@ -59,7 +59,7 @@ target_include_directories(meinproc PRIVATE ${LIBXML2_INCLUDE_DIR})
 target_link_libraries(meinproc
     kde2::ksycoca
     BZip2::BZip2
-    ${LIBXML2_LIBRARY}
+    ${LIBXML2_LIBRARIES}
     ${LIBXSLT_LIBRARIES}
     )
 
@@ -71,7 +71,7 @@ target_include_directories(xml2man PRIVATE ${LIBXML2_INCLUDE_DIR})
 target_link_libraries(xml2man
     kde2::ksycoca
     BZip2::BZip2
-    ${LIBXML2_LIBRARY}
+    ${LIBXML2_LIBRARIES}
     ${LIBXSLT_LIBRARIES}
     )
 
