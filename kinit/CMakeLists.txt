@@ -39,8 +39,7 @@ target_link_libraries(kdeinit
     kde2::kdeui
     kde2::kio
     kde2::kdecore
-    ltdl
-    dl
+    ltdl::ltdl
     )
 
 add_executable(kdeinit_wrapper wrapper.c)

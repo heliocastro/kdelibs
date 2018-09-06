@@ -192,9 +192,10 @@ kde2_library(ksycoca
         ${ksycoca_SOURCES}
     LIBS
         kde2::kio
-        ltdl
+        ltdl::ltdl
     VERSION
         3.0.0
+    ALLOW_UNDEFINED
     )
 
 kde2_module(kio_uiserver_module

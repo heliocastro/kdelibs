@@ -41,8 +41,7 @@ kde2_library(libmcop
     SOURCES
         ${libmcop_SRCS}
     LIBS
-        ltdl
-        dl
+        ltdl::ltdl
     COMPILE_DEFINITIONS
         -DEXTENSION_DIR="${CMAKE_INSTALL_FULL_LIBDIR}"
         -DTRADER_DIR="${CMAKE_INSTALL_FULL_LIBDIR}/mcop"

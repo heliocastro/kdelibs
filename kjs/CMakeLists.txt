@@ -94,7 +94,7 @@ kde2_library(libkjs
     SOURCES
         ${libkjs_SOURCES}
     LIBS
-        ${PCRE_LIBRARIES}
+        pcre::pcre
     VERSION
         1.0.0
     )

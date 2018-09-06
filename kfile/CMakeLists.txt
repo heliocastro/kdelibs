@@ -24,7 +24,9 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-add_subdirectory(acl_prop_page)
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    add_subdirectory(acl_prop_page)
+endif()
 
 set(libkfile_SRCS
     kfilebookmark.cpp kfiledialogconf.cpp kfilereader.cpp kfileviewitem.cpp booktoken.cpp

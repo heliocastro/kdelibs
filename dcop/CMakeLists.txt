@@ -24,6 +24,10 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+include_directories(
+    ${X11_INCLUDE_DIR}
+    )
+
 add_subdirectory(KDE-ICE)
 add_subdirectory(dcopidl)
 add_subdirectory(dcopidl2cpp)
